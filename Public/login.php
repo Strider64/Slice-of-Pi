@@ -59,7 +59,7 @@ if (isset($submit) && $submit === 'register') {
 
 require_once '../private/includes/header.inc.php';
 ?>
-<div class="container mainContent">
+<div class="container mainContent white">
     <?php if (!$invalid) { ?>
         <div id="login_section" class="span6">
             <article>
