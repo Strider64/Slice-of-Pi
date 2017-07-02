@@ -20,7 +20,7 @@ require_once '../private/includes/header.inc.php';
         while ($row = $leftcol->fetch(PDO::FETCH_OBJ)) {
             echo '<article class="content">' . "\n";
 
-            echo "<h1>" . $row->heading . "</h1>\n";
+            echo "<h1>" . htmlspecialchars($row->heading) . "</h1>\n";
 
             if ($row->image_path) {
                 echo '<figure class="imageStyle">' . "\n";
@@ -38,7 +38,7 @@ require_once '../private/includes/header.inc.php';
         $rightcol = $cms->read($basename, 'right');
         while ($row = $rightcol->fetch(PDO::FETCH_OBJ)) {
             echo '<article class="content">' . "\n";
-            echo "<h1>" . $row->heading . "</h1>\n";
+            echo "<h1>" . htmlspecialchars($row->heading) . "</h1>\n";
             if ($row->image_path) {
                 echo '<figure class="imageStyle">' . "\n";
                 echo '<img src="' . $row->image_path . '" alt="">' . "\n";
