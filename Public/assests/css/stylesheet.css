@@ -1,0 +1,860 @@
+@import url("https://fonts.googleapis.com/css?family=Merriweather|Raleway");
+/*  Color Theme*/
+/* Color Theme 2 */
+/* 
+    Created on : Feb 16, 2016, 8:22:58 AM
+    Author     : strider64
+*/
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, textarea, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+.container {
+  /* * For IE 6/7 only * Include this rule to trigger hasLayout and contain floats. */
+  *zoom: 1;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box; }
+
+.container:after {
+  clear: both; }
+
+.container:before,
+.container:after {
+  content: " ";
+  display: table; }
+
+.row {
+  /* * For IE 6/7 only * Include this rule to trigger hasLayout and contain floats. */
+  *zoom: 1; }
+
+.row:after {
+  clear: both; }
+
+.row:before,
+.row:after {
+  content: " ";
+  display: table; }
+
+[class^="span"] {
+  float: left;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  /* Firefox */ }
+
+[class^="span"]:first-child {
+  margin-left: 0; }
+
+.span1 {
+  width: 8.333333333333332%; }
+
+.span2 {
+  width: 16.666666666666664%; }
+
+.span3 {
+  width: 25%; }
+
+.span4 {
+  width: 33.33333333333333%; }
+
+.span5 {
+  width: 41.66666666666667%; }
+
+.span6 {
+  width: 50%; }
+
+.span7 {
+  width: 58.333333333333336%; }
+
+.span8 {
+  width: 66.66666666666666%; }
+
+.span9 {
+  width: 75%; }
+
+.span10 {
+  width: 83.33333333333334%; }
+
+.span11 {
+  width: 91.66666666666666%; }
+
+.span12 {
+  width: 100%; }
+
+[class^="m-span"] {
+  padding: 10px 0;
+  margin-left: 3.125%;
+  float: left;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  /* Firefox */ }
+
+[class^="m-span"]:first-child {
+  margin-left: 0; }
+
+.m-span1 {
+  width: 5.46875%; }
+
+.m-span2 {
+  width: 14.0625%; }
+
+.m-span3 {
+  width: 22.65625%; }
+
+.m-span4 {
+  width: 31.25%; }
+
+.m-span5 {
+  width: 39.84375%; }
+
+.m-span6 {
+  width: 48.4375%; }
+
+.m-span7 {
+  width: 57.03125%; }
+
+.m-span8 {
+  width: 65.625%; }
+
+.m-span9 {
+  width: 74.21875%; }
+
+.m-span10 {
+  width: 82.8125%; }
+
+.m-span11 {
+  width: 91.40625%; }
+
+.m-span12 {
+  width: 100%; }
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box; }
+
+html {
+  font-size: 1em; }
+
+/*******************************************
+TYPOGRAPHY CSS STYLING
+********************************************/
+h1 {
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-size: 1.4em;
+  line-height: 1.5; }
+
+h2 {
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-size: 1.4em;
+  line-height: 1.5;
+  font-weight: bold; }
+
+p, td {
+  font-family: Arial, Helvetica, sans-serif; }
+
+body {
+  background-color: #c1e1ec;
+  padding: 0;
+  margin: 0; }
+
+img {
+  width: 100%; }
+
+.heading {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  width: 100%;
+  display: block;
+  max-width: 1000px;
+  height: 140px;
+  border-bottom: 4px solid #4C9CF1;
+  z-index: 100;
+  background-color: #fff;
+  margin-left: -500px; }
+
+#logo {
+  margin: 20px;
+  float: left;
+  width: 90px;
+  height: 100px;
+  background: url(../images/img-rpi-01-small.png) no-repeat center;
+  display: block; }
+
+#menu-icon {
+  display: none;
+  width: 40px;
+  height: 40px;
+  background: #4C8FEC url(../images/icon-menu-01.png) center; }
+  #menu-icon:hover {
+    background-color: #444;
+    border-radius: 4px 4px 0 0; }
+
+nav {
+  float: right;
+  padding: 20px; }
+  nav a {
+    color: #4C9CF1;
+    text-decoration: none;
+    font-weight: bold; }
+    nav a:hover {
+      color: #444; }
+  nav ul {
+    list-style: none; }
+  nav li {
+    display: inline-block;
+    float: left;
+    padding: 10px; }
+  nav .current {
+    color: #2262AD; }
+
+.mainContent {
+  background-color: #EDEAD9;
+  min-height: 600px;
+  padding: 20px;
+  margin-top: 140px; }
+
+#left_column {
+  border-right: 5px solid #EDEAD9; }
+
+#right_column {
+  border-left: 5px solid #EDEAD9; }
+
+.white {
+  background-color: #fff; }
+
+article.content {
+  background-color: #fff;
+  padding: 5px 20px; }
+  article.content h1 {
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    color: #2e2e2e; }
+  article.content p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.9em;
+    line-height: 1.5;
+    color: #2e2e2e; }
+  article.content figure.imageStyle {
+    -moz-box-shadow: 2px 2px 3px rgba(46, 46, 46, 0.6);
+    -webkit-box-shadow: 2px 2px 3px rgba(46, 46, 46, 0.6);
+    box-shadow: 2px 2px 3px rgba(46, 46, 46, 0.6);
+    background-color: #f2f2f2;
+    padding: 10px 15px;
+    margin-bottom: 10px; }
+
+div#login_section article, div#register_section article {
+  padding: 20px; }
+  div#login_section article h1, div#register_section article h1 {
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    font-size: 1.4em;
+    color: #348fef;
+    font-weight: bold; }
+  div#login_section article h1.errorHeader, div#register_section article h1.errorHeader {
+    color: red; }
+  div#login_section article p, div#register_section article p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.0em;
+    line-height: 1.5;
+    color: #4C9CF1; }
+  div#login_section article p.error, div#register_section article p.error {
+    color: red; }
+
+form#login, form#register {
+  display: block;
+  width: 100%;
+  max-width: 440px;
+  height: auto;
+  background-color: #fff;
+  padding: 10px; }
+  form#login fieldset, form#register fieldset {
+    border: 4px solid #4c8fec;
+    padding: 20px; }
+    form#login fieldset legend, form#register fieldset legend {
+      font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+      font-size: 1.2em;
+      color: #4c8fec;
+      font-weight: bolder;
+      padding: 0 5px; }
+    form#login fieldset label, form#register fieldset label {
+      float: left;
+      display: block;
+      width: 100%;
+      max-width: 140px;
+      height: 30px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.8em;
+      line-height: 30px;
+      text-align: right;
+      color: #4C8FEC;
+      font-weight: bold;
+      text-transform: capitalize;
+      padding: 2px 2px 0px; }
+    form#login fieldset input, form#register fieldset input {
+      clear: right;
+      display: block;
+      width: 100%;
+      max-width: 210px;
+      height: 30px;
+      border: none;
+      outline: none;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.8em;
+      color: #4C8FEC;
+      font-weight: bold;
+      height: 30px;
+      border-bottom: 4px solid #4C8FEC;
+      padding-left: 5px;
+      margin-bottom: 10px; }
+    form#login fieldset input[type=submit], form#register fieldset input[type=submit] {
+      cursor: pointer;
+      clear: both;
+      border: none;
+      outline: none;
+      float: right;
+      display: block;
+      width: 100%;
+      max-width: 80px;
+      height: 40px;
+      background-color: #4C8FEC;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.8em;
+      text-align: center;
+      text-height: 40px;
+      text-transform: capitalize;
+      color: #fff;
+      margin-top: 10px;
+      margin-right: 22px; }
+      form#login fieldset input[type=submit]:hover, form#register fieldset input[type=submit]:hover {
+        background-color: #2e6bb1; }
+
+form#dataEntry {
+  background-color: #f2f2f2;
+  padding: 15px; }
+  form#dataEntry fieldset {
+    border: 2px solid #4C9CF1;
+    padding: 15px;
+    margin-bottom: 10px; }
+  form#dataEntry legend {
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    font-size: 1.2em;
+    color: #4C9CF1;
+    padding: 0 5px; }
+  form#dataEntry #mainselection select {
+    border: 0;
+    color: #EEE;
+    background: transparent;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 2px 10px;
+    width: 428px;
+    *width: 400px;
+    *background: #4C9CF1;
+    -webkit-appearance: none; }
+  form#dataEntry #mainselection {
+    overflow: hidden;
+    width: 400px;
+    -moz-border-radius: 9px 9px 9px 9px;
+    -webkit-border-radius: 9px 9px 9px 9px;
+    border-radius: 9px 9px 9px 9px;
+    box-shadow: 1px 1px 6px #4C9CF1;
+    background: #137ded no-repeat scroll 369px center;
+    margin: 0 auto; }
+  form#dataEntry .maxl {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    background-color: #fff;
+    padding: 10px;
+    margin: 20px auto; }
+    form#dataEntry .maxl .inline {
+      display: inline-block;
+      margin-left: 45px; }
+    form#dataEntry .maxl .inline + .inline {
+      margin-left: 10px; }
+    form#dataEntry .maxl .radio {
+      color: #999;
+      font-size: 15px;
+      position: relative; }
+    form#dataEntry .maxl .radio span {
+      position: relative;
+      font-size: 1.4em;
+      padding-left: 20px; }
+    form#dataEntry .maxl .radio span:after {
+      content: '';
+      width: 15px;
+      height: 15px;
+      border: 3px solid;
+      position: absolute;
+      left: 0;
+      top: 5px;
+      border-radius: 100%;
+      -ms-border-radius: 100%;
+      -moz-border-radius: 100%;
+      -webkit-border-radius: 100%;
+      box-sizing: border-box;
+      -ms-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box; }
+    form#dataEntry .maxl .radio input[type="radio"] {
+      cursor: pointer;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      opacity: 0;
+      filter: alpha(opacity=0);
+      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; }
+    form#dataEntry .maxl .radio input[type="radio"]:checked + span {
+      color: #4C9CF1; }
+    form#dataEntry .maxl .radio input[type="radio"]:checked + span:before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      position: absolute;
+      background-color: #4C9CF1;
+      left: 5px;
+      top: 10px;
+      border-radius: 100%;
+      -ms-border-radius: 100%;
+      -moz-border-radius: 100%;
+      -webkit-border-radius: 100%; }
+  form#dataEntry #imgBtn {
+    outline: none;
+    border: none;
+    clear: both;
+    display: block;
+    width: 100%;
+    max-width: 422px;
+    background-color: #193a60;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.0em;
+    color: #fff;
+    padding: 0;
+    margin: 0 auto 20px; }
+  form#dataEntry #imgBtn::-webkit-file-upload-button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    color: white;
+    border: none;
+    background-color: red;
+    width: 120px;
+    height: 30px; }
+  form#dataEntry label.inputLabel {
+    clear: left;
+    float: left;
+    display: block;
+    width: 100%;
+    max-width: 100px;
+    height: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.8em;
+    line-height: 20px;
+    color: #4C8FEC;
+    font-weight: bold;
+    text-transform: capitalize;
+    padding: 2px 0px; }
+  form#dataEntry input {
+    clear: right;
+    display: block;
+    width: 100%;
+    max-width: 315px;
+    height: 30px;
+    border: none;
+    outline: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.8em;
+    color: #4C8FEC;
+    font-weight: bold;
+    height: 30px;
+    padding-left: 5px;
+    margin-bottom: 10px; }
+  form#dataEntry label.textareaLabel {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.8em;
+    color: #4C8FEC;
+    font-weight: bold; }
+  form#dataEntry textarea {
+    border: none;
+    outline: none;
+    resize: none;
+    width: 100%;
+    max-width: 100%;
+    height: 200px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.8em;
+    padding: 5px;
+    margin-top: 2px; }
+  form#dataEntry input[type=submit] {
+    cursor: pointer;
+    clear: both;
+    border: none;
+    outline: none;
+    float: right;
+    display: block;
+    width: 100%;
+    max-width: 60px;
+    height: 30px;
+    background-color: #4C8FEC;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.8em;
+    text-align: center;
+    text-height: 30px;
+    text-transform: capitalize;
+    color: #fff;
+    margin-top: 10px;
+    margin-right: 0px; }
+    form#dataEntry input[type=submit]:hover {
+      background-color: #2e6bb1; }
+
+/* Calendar CSS Styling */
+div#calendarBox {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  height: auto; }
+  div#calendarBox table {
+    float: none;
+    width: 100%;
+    position: relative;
+    border-collapse: collapse; }
+    div#calendarBox table th {
+      border-bottom: 1px solid #CCCCCC; }
+    div#calendarBox table th.tableHeading {
+      height: 25px;
+      background-color: #4484CE;
+      font-size: 0.8em;
+      line-height: 25px;
+      color: #F9CF00; }
+    div#calendarBox table th {
+      vertical-align: bottom;
+      font-size: 0.6em;
+      font-weight: bold;
+      color: #F9CF00;
+      width: 14.2857143%;
+      height: 15px;
+      padding: 5px;
+      background-color: #295f9c; }
+    div#calendarBox table td {
+      border: 1px solid #CCCCCC;
+      background-color: #5891d3;
+      vertical-align: middle;
+      width: 14.2857143%;
+      height: 25px;
+      font-size: 0.8em;
+      text-align: center;
+      color: rgba(217, 217, 217, 0.5); }
+    div#calendarBox table td a {
+      display: inline-block;
+      width: 100%;
+      height: inherit;
+      background-color: #4484CE;
+      font-family: Arial, Helvetica, sans-serif;
+      text-decoration: none;
+      color: #F9CF00;
+      line-height: 25px;
+      padding: 0;
+      margin: 0; }
+      div#calendarBox table td a:hover {
+        background-color: #2e6bb1; }
+    div#calendarBox table td.background a {
+      font-size: 0.8em;
+      color: #ffa;
+      background-color: #295f9c; }
+      div#calendarBox table td.background a:hover {
+        background-color: #2e6bb1; }
+    div#calendarBox table a.foreground {
+      color: #fff; }
+    div#calendarBox table .prev-left, div#calendarBox table .next-right {
+      position: relative;
+      bottom: 0;
+      text-decoration: none;
+      color: #CCCCCC;
+      font-size: 1.0em;
+      padding: 0 10px; }
+    div#calendarBox table .prev-left {
+      float: left; }
+      div#calendarBox table .prev-left:hover {
+        color: #F9CF00; }
+    div#calendarBox table .next-right {
+      float: right; }
+      div#calendarBox table .next-right:hover {
+        color: #F9CF00; }
+
+section {
+  margin: 80px auto 40px;
+  max-width: 980px;
+  position: relative;
+  padding: 20px; }
+
+/* SMARTPHONE STYLING */
+@media only screen and (max-width: 480px) {
+  [class^="span"] {
+    width: 100%; }
+
+  .heading {
+    left: 0;
+    margin-left: 0; }
+
+  #menu-icon {
+    display: inline-block; }
+
+  nav ul, nav:active ul {
+    display: none;
+    position: absolute;
+    padding: 20px;
+    background: #fff;
+    border: 5px solid #444;
+    right: 20px;
+    top: 60px;
+    width: 50%;
+    border-radius: 4px 0 4px 4px; }
+
+  nav li {
+    text-align: center;
+    width: 100%;
+    padding: 10px 0;
+    margin: 0; }
+
+  nav:hover ul {
+    display: block; }
+
+  form#dataEntry {
+    background-color: #f2f2f2;
+    padding: 10px; }
+    form#dataEntry fieldset {
+      border: 2px solid #4C9CF1;
+      padding: 15px;
+      margin-bottom: 10px; }
+    form#dataEntry legend {
+      font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+      font-size: 1.2em;
+      color: #4C9CF1;
+      padding: 0 5px; }
+    form#dataEntry #mainselection select {
+      border: 0;
+      color: #EEE;
+      background: transparent;
+      font-size: 1.0em;
+      font-weight: bold;
+      padding: 2px 10px;
+      width: 248px;
+      *width: 320px;
+      *background: #4C9CF1;
+      -webkit-appearance: none; }
+    form#dataEntry #mainselection {
+      overflow: hidden;
+      width: 320px;
+      -moz-border-radius: 9px 9px 9px 9px;
+      -webkit-border-radius: 9px 9px 9px 9px;
+      border-radius: 9px 9px 9px 9px;
+      box-shadow: 1px 1px 6px #4C9CF1;
+      background: #137ded no-repeat scroll 369px center;
+      margin: 0 auto; }
+    form#dataEntry .maxl {
+      display: block;
+      width: 100%;
+      max-width: 320px;
+      height: auto;
+      background-color: #fff;
+      padding: 10px;
+      margin: 10px auto; }
+      form#dataEntry .maxl .inline {
+        display: inline-block;
+        margin-left: 5px; }
+      form#dataEntry .maxl .inline + .inline {
+        margin-left: 5px; }
+      form#dataEntry .maxl .radio {
+        color: #999;
+        font-size: 15px;
+        position: relative; }
+      form#dataEntry .maxl .radio span {
+        position: relative;
+        font-size: 1.2em;
+        padding-left: 20px; }
+      form#dataEntry .maxl .radio span:after {
+        content: '';
+        width: 15px;
+        height: 15px;
+        border: 3px solid;
+        position: absolute;
+        left: 0;
+        top: 5px;
+        border-radius: 100%;
+        -ms-border-radius: 100%;
+        -moz-border-radius: 100%;
+        -webkit-border-radius: 100%;
+        box-sizing: border-box;
+        -ms-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box; }
+      form#dataEntry .maxl .radio input[type="radio"] {
+        cursor: pointer;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        opacity: 0;
+        filter: alpha(opacity=0);
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; }
+      form#dataEntry .maxl .radio input[type="radio"]:checked + span {
+        color: #4C9CF1; }
+      form#dataEntry .maxl .radio input[type="radio"]:checked + span:before {
+        content: '';
+        width: 5px;
+        height: 5px;
+        position: absolute;
+        background-color: #4C9CF1;
+        left: 5px;
+        top: 10px;
+        border-radius: 100%;
+        -ms-border-radius: 100%;
+        -moz-border-radius: 100%;
+        -webkit-border-radius: 100%; }
+    form#dataEntry #imgBtn {
+      outline: none;
+      border: none;
+      clear: both;
+      display: block;
+      width: 100%;
+      max-width: 422px;
+      background-color: #193a60;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 1.0em;
+      color: #fff;
+      padding: 0;
+      margin: 0 auto 20px; }
+    form#dataEntry #imgBtn::-webkit-file-upload-button {
+      -webkit-appearance: button;
+      -moz-appearance: button;
+      color: white;
+      border: none;
+      background-color: red;
+      width: 120px;
+      height: 30px; }
+    form#dataEntry label.inputLabel {
+      clear: left;
+      float: left;
+      display: block;
+      width: 100%;
+      max-width: 100px;
+      height: 40px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.8em;
+      line-height: 20px;
+      color: #4C8FEC;
+      font-weight: bold;
+      text-transform: capitalize;
+      padding: 2px 0px; }
+    form#dataEntry input {
+      clear: right;
+      display: block;
+      width: 100%;
+      max-width: 315px;
+      height: 30px;
+      border: none;
+      outline: none;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.8em;
+      color: #4C8FEC;
+      font-weight: bold;
+      height: 30px;
+      padding-left: 5px;
+      margin-bottom: 10px; }
+    form#dataEntry label.textareaLabel {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.8em;
+      color: #4C8FEC;
+      font-weight: bold; }
+    form#dataEntry textarea {
+      border: none;
+      outline: none;
+      resize: none;
+      width: 100%;
+      max-width: 100%;
+      height: 200px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.8em;
+      padding: 5px;
+      margin-top: 2px; }
+    form#dataEntry input[type=submit] {
+      cursor: pointer;
+      clear: both;
+      border: none;
+      outline: none;
+      float: right;
+      display: block;
+      width: 100%;
+      max-width: 60px;
+      height: 30px;
+      background-color: #4C8FEC;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.8em;
+      text-align: center;
+      text-height: 30px;
+      text-transform: capitalize;
+      color: #fff;
+      margin-top: 10px;
+      margin-right: 0px; }
+      form#dataEntry input[type=submit]:hover {
+        background-color: #2e6bb1; } }
+/* TABLET STYLING */
+@media only screen and (min-width: 481px) and (max-width: 999px) {
+  #menu-icon {
+    display: none; } }
+/* PC STYLING */
+@media only screen and (min-width: 1000px) {
+  #menu-icon {
+    display: none; }
+
+  html {
+    font-size: 1.25em; } }
+
+/*# sourceMappingURL=stylesheet.css.map */
