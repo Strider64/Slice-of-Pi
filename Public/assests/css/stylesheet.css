@@ -200,7 +200,7 @@ p, td {
   font-family: Arial, Helvetica, sans-serif; }
 
 body {
-  background-color: #c1e1ec;
+  background-color: lightgray;
   padding: 0;
   margin: 0; }
 
@@ -271,8 +271,19 @@ nav {
   background-color: #fff; }
 
 article.content {
+  position: relative;
   background-color: #fff;
   padding: 5px 20px; }
+  article.content .editBtn {
+    position: absolute;
+    top: 3px;
+    right: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.6em;
+    text-decoration: none;
+    color: red; }
+    article.content .editBtn:hover {
+      color: green; }
   article.content h1 {
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
     color: #2e2e2e; }
@@ -290,6 +301,7 @@ article.content {
     margin-bottom: 10px; }
 
 div#login_section article, div#register_section article {
+  position: relative;
   padding: 20px; }
   div#login_section article h1, div#register_section article h1 {
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
@@ -511,7 +523,7 @@ form#dataEntry {
     outline: none;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 0.8em;
-    color: #4C8FEC;
+    color: #2e2e2e;
     font-weight: bold;
     height: 30px;
     padding-left: 5px;
@@ -527,10 +539,11 @@ form#dataEntry {
     resize: none;
     width: 100%;
     max-width: 100%;
-    height: 200px;
+    height: 400px;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 0.8em;
-    padding: 5px;
+    font-size: 0.9em;
+    line-height: 1.2;
+    padding: 10px 5px;
     margin-top: 2px; }
   form#dataEntry input[type=submit] {
     cursor: pointer;
@@ -634,6 +647,19 @@ section {
   position: relative;
   padding: 20px; }
 
+footer.footer-style {
+  border-top: 4px solid #4C9CF1;
+  background-color: #fff;
+  height: 50px;
+  margin-bottom: 10px; }
+  footer.footer-style p.footer-name {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #1d82ed;
+    font-size: 0.8em;
+    line-height: 50px;
+    text-align: center;
+    font-weight: bold; }
+
 /* SMARTPHONE STYLING */
 @media only screen and (max-width: 480px) {
   [class^="span"] {
@@ -670,12 +696,12 @@ section {
     background-color: #f2f2f2;
     padding: 10px; }
     form#dataEntry fieldset {
-      border: 2px solid #4C9CF1;
-      padding: 15px;
+      border: 1px solid #4C9CF1;
+      padding: 5px 10px;
       margin-bottom: 10px; }
     form#dataEntry legend {
       font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-      font-size: 1.2em;
+      font-size: 1.0em;
       color: #4C9CF1;
       padding: 0 5px; }
     form#dataEntry #mainselection select {
@@ -726,7 +752,7 @@ section {
         border: 3px solid;
         position: absolute;
         left: 0;
-        top: 5px;
+        top: 3px;
         border-radius: 100%;
         -ms-border-radius: 100%;
         -moz-border-radius: 100%;
@@ -753,7 +779,7 @@ section {
         position: absolute;
         background-color: #4C9CF1;
         left: 5px;
-        top: 10px;
+        top: 8px;
         border-radius: 100%;
         -ms-border-radius: 100%;
         -moz-border-radius: 100%;
@@ -767,7 +793,7 @@ section {
       max-width: 422px;
       background-color: #193a60;
       font-family: Arial, Helvetica, sans-serif;
-      font-size: 1.0em;
+      font-size: 0.8em;
       color: #fff;
       padding: 0;
       margin: 0 auto 20px; }
@@ -777,7 +803,8 @@ section {
       color: white;
       border: none;
       background-color: red;
-      width: 120px;
+      width: 100%;
+      max-width: 120px;
       height: 30px; }
     form#dataEntry label.inputLabel {
       clear: left;
@@ -785,7 +812,7 @@ section {
       display: block;
       width: 100%;
       max-width: 100px;
-      height: 40px;
+      height: 25px;
       font-family: Arial, Helvetica, sans-serif;
       font-size: 0.8em;
       line-height: 20px;
@@ -812,7 +839,8 @@ section {
       font-family: Arial, Helvetica, sans-serif;
       font-size: 0.8em;
       color: #4C8FEC;
-      font-weight: bold; }
+      font-weight: bold;
+      margin-bottom: 5px; }
     form#dataEntry textarea {
       border: none;
       outline: none;
