@@ -24,7 +24,7 @@ class Display extends Read {
 
             if ($this->row->image_path) {
                 echo '<figure class="imageStyle">' . "\n";
-                echo '<img src="' . $this->row->image_path . '" alt="' . htmlspecialchars($this->row->heading) . '">' . "\n";
+                echo '<img src="' . htmlspecialchars($this->row->image_path) . '" alt="' . htmlspecialchars($this->row->heading) . '">' . "\n";
                 echo '<figcaption>&nbsp;</figcaption>' . "\n";
                 echo "</figure>\n";
             }
