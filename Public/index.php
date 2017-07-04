@@ -21,10 +21,12 @@ require_once '../private/includes/header.inc.php';
             echo '<article class="content">' . "\n";
 
             echo "<h1>" . htmlspecialchars($row->heading) . "</h1>\n";
-
+            if (isset($_SESSION['user']) && $_SESSION['user']->security_level === 'sysop') {
+                echo '<a class="editBtn" href="edit_page.php?id=' . $row->id . '">Edit</a>' . "\n";
+            }
             if ($row->image_path) {
                 echo '<figure class="imageStyle">' . "\n";
-                echo '<img src="' . $row->image_path . '" alt="">' . "\n";
+                echo '<img src="' . $row->image_path . '" alt="' . htmlspecialchars($row->heading) . '">' . "\n";
                 echo '<figcaption>&nbsp;</figcaption>' . "\n";
                 echo "</figure>\n";
             }
@@ -39,9 +41,14 @@ require_once '../private/includes/header.inc.php';
         while ($row = $rightcol->fetch(PDO::FETCH_OBJ)) {
             echo '<article class="content">' . "\n";
             echo "<h1>" . htmlspecialchars($row->heading) . "</h1>\n";
+
+            if (isset($_SESSION['user']) && $_SESSION['user']->security_level === 'sysop') {
+                echo '<a class="editBtn" href="edit_page.php?id=' . $row->id . '">Edit</a>' . "\n";
+            }
+
             if ($row->image_path) {
                 echo '<figure class="imageStyle">' . "\n";
-                echo '<img src="' . $row->image_path . '" alt="">' . "\n";
+                echo '<img src="' . $row->image_path . '" alt="' . htmlspecialchars($row->heading) . '">' . "\n";
                 echo '<figcaption>&nbsp;</figcaption>' . "\n";
                 echo "</figure>\n";
             }
@@ -50,7 +57,6 @@ require_once '../private/includes/header.inc.php';
         }
         ?>    
     </div>
-
 </div>
-</body>
-</html>
+<?php
+require_once '../private/includes/footer.inc.php';

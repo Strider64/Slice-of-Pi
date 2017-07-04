@@ -7,8 +7,8 @@ use Library\CMS\CMS;
 
 protected_page();
 
-$sysop = ['<option value="index.php" selected>Home Page</option>', '<option value="about.php">About Page</option>', '<option value="blog.php">Member Blog Page</option>'];
-$member = ['<option value="blog.php">Member Blog Page</option>'];
+$sysop = ['<option value="index.php" selected>Home Page</option>', '<option value="about.php">About Page</option>', '<option value="members_page.php">Member Blog Page</option>'];
+$member = ['<option value="members_page.php">Member Blog Page</option>'];
 
 $cms = new CMS();
 
@@ -17,9 +17,13 @@ $data['user_id'] = filter_input(INPUT_POST, 'user_id', FILTER_SANITIZE_NUMBER_IN
 if ($_SESSION['user']->security_level === 'sysop') {
     $data['page_name'] = filter_input(INPUT_POST, 'page_name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 } else {
-    $data['page_name'] = 'blog.php';
+    $data['page_name'] = 'members_page.php';
 }
-$data['column_pos'] = filter_input(INPUT_POST, 'column_pos', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+if ($_SESSION['user']->security_level === 'sysop') {
+    $data['column_pos'] = filter_input(INPUT_POST, 'column_pos', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+} else {
+    $data['column_pos'] = 'right';
+}
 $data['heading'] = filter_input(INPUT_POST, 'heading', FILTER_DEFAULT);
 $data['content'] = filter_input(INPUT_POST, 'content', FILTER_DEFAULT);
 
@@ -50,7 +54,7 @@ if ($upload && $upload === 'enter') {
          * but I have already spent more time on it than I wanted to. 
          */
         if (filter_input(INPUT_SERVER, 'SERVER_NAME', FILTER_SANITIZE_URL) !== "localhost") {
-            $data['image_path'] = str_ireplace("public/", "", $data['image_path']);
+            $data['image_path'] = str_ireplace("../public/", "https://www.pepster.com/", $data['image_path']);
         }
     } else {
         $data['image_path'] = NULL;
@@ -92,15 +96,19 @@ require_once '../private/includes/header.inc.php';
                     </select>
                 </div>
                 <div class="maxl">
+                    <?php if ($_SESSION['user']->security_level === 'sysop') { ?>
+                        <label class="radio inline"> 
+                            <input type="radio" name="column_pos" value="left">
+                            <span>Left Column</span> 
+                        </label>
+                    <?php } ?>
                     <label class="radio inline"> 
-                        <input type="radio" name="column_pos" value="left" checked>
-                        <span>Left Column</span> 
-                    </label>
-                    <label class="radio inline"> 
-                        <input type="radio" name="column_pos" value="right">
+                        <input type="radio" name="column_pos" value="right" checked>
                         <span>Right Column</span> 
                     </label>
+
                 </div>
+
                 <div class="maxl">
                     <label class="radio inline">
                         <input id="yesCheck" type="radio" name="insert_image" value="yes" checked>
@@ -126,25 +134,29 @@ require_once '../private/includes/header.inc.php';
             </fieldset>
         </form>
     </div>
-    <div id="right_section" class="span6">
-        <article>
-            <?php //echo "<pre>" . print_r($_SESSION['user'], 1) . "</pre>"; ?>
-        </article>
+    <div class="span6">
+        <?php
+        $rightcol = $cms->read($basename, 'right');
+        while ($row = $rightcol->fetch(PDO::FETCH_OBJ)) {
+            echo '<article class="content">' . "\n";
+            echo "<h1>" . htmlspecialchars($row->heading) . "</h1>\n";
+
+            if (isset($_SESSION['user']) && ($_SESSION['user']->security_level === 'sysop' || $_SESSION['user']->user_id === $row->user_id)) {
+                echo '<a class="editBtn" href="edit_page.php?id=' . $row->id . '">Edit</a>' . "\n";
+            }
+
+            if ($row->image_path) {
+                echo '<figure class="imageStyle">' . "\n";
+                echo '<img src="' . $row->image_path . '" alt="' . htmlspecialchars($row->heading) .'">' . "\n";
+                echo '<figcaption>&nbsp;</figcaption>' . "\n";
+                echo "</figure>\n";
+            }
+            echo "<p>" . htmlspecialchars($row->content) . "</p>\n";
+            echo "</article>\n";
+        }
+        ?>    
     </div>
 </div>
-<script>
-    var yesCheck = document.getElementById("yesCheck");
-    var noCheck = document.getElementById("noCheck");
-
-    yesCheck.addEventListener('click', function () {
-        document.getElementById('imgBtn').style.display = "block";
-    });
-
-    noCheck.addEventListener('click', function () {
-        document.getElementById('imgBtn').style.display = "none";
-    });
-
-</script>
-</body>
-</html>
+<?php
+require_once '../private/includes/footer.inc.php';
 

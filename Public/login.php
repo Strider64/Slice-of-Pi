@@ -129,5 +129,5 @@ require_once '../private/includes/header.inc.php';
         </article>
     </div>
 </div>
-</body>
-</html>
+<?php
+require_once '../private/includes/footer.inc.php';
