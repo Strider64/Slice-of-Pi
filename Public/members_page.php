@@ -5,12 +5,15 @@ use Library\ProcessImage\ProcessImage as Rename;
 use Library\Resize\Resize;
 use Library\CMS\CMS;
 
+use Library\Display\Display;
+
 protected_page();
 
 $sysop = ['<option value="index.php" selected>Home Page</option>', '<option value="about.php">About Page</option>', '<option value="members_page.php">Member Blog Page</option>'];
 $member = ['<option value="members_page.php">Member Blog Page</option>'];
 
 $cms = new CMS();
+$display = new Display();
 
 $upload = filter_input(INPUT_POST, 'action', FILTER_SANITIZE_URL);
 $data['user_id'] = filter_input(INPUT_POST, 'user_id', FILTER_SANITIZE_NUMBER_INT);
@@ -134,27 +137,8 @@ require_once '../private/includes/header.inc.php';
             </fieldset>
         </form>
     </div>
-    <div class="span6">
-        <?php
-        $rightcol = $cms->read($basename, 'right');
-        while ($row = $rightcol->fetch(PDO::FETCH_OBJ)) {
-            echo '<article class="content">' . "\n";
-            echo "<h1>" . htmlspecialchars($row->heading) . "</h1>\n";
-
-            if (isset($_SESSION['user']) && ($_SESSION['user']->security_level === 'sysop' || $_SESSION['user']->user_id === $row->user_id)) {
-                echo '<a class="editBtn" href="edit_page.php?id=' . $row->id . '">Edit</a>' . "\n";
-            }
-
-            if ($row->image_path) {
-                echo '<figure class="imageStyle">' . "\n";
-                echo '<img src="' . $row->image_path . '" alt="' . htmlspecialchars($row->heading) .'">' . "\n";
-                echo '<figcaption>&nbsp;</figcaption>' . "\n";
-                echo "</figure>\n";
-            }
-            echo "<p>" . htmlspecialchars($row->content) . "</p>\n";
-            echo "</article>\n";
-        }
-        ?>    
+    <div class="span6">   
+        <?php  $display->read($basename, 'right'); ?>
     </div>
 </div>
 <?php

@@ -3,8 +3,9 @@ require_once '../private/initialize.php';
 
 use Library\Calendar\Calendar;
 use Library\CMS\CMS;
+use Library\Display\Display;
 
-$cms = new CMS();
+$display = new Display();
 
 
 $calendar = new Calendar();
@@ -15,47 +16,10 @@ require_once '../private/includes/header.inc.php';
 <div class="container mainContent">
 
     <div id="left_column" class="span6">
-        <?php
-        $leftcol = $cms->read($basename, 'left');
-        while ($row = $leftcol->fetch(PDO::FETCH_OBJ)) {
-            echo '<article class="content">' . "\n";
-
-            echo "<h1>" . htmlspecialchars($row->heading) . "</h1>\n";
-            if (isset($_SESSION['user']) && $_SESSION['user']->security_level === 'sysop') {
-                echo '<a class="editBtn" href="edit_page.php?id=' . $row->id . '">Edit</a>' . "\n";
-            }
-            if ($row->image_path) {
-                echo '<figure class="imageStyle">' . "\n";
-                echo '<img src="' . $row->image_path . '" alt="' . htmlspecialchars($row->heading) . '">' . "\n";
-                echo '<figcaption>&nbsp;</figcaption>' . "\n";
-                echo "</figure>\n";
-            }
-            echo "<p>" . htmlspecialchars($row->content) . "</p>\n";
-            echo "</article>\n";
-        }
-        ?>
+        <?php $display->read($basename, 'left') ?> 
     </div>
     <div id="right_column" class="span6">
-        <?php
-        $rightcol = $cms->read($basename, 'right');
-        while ($row = $rightcol->fetch(PDO::FETCH_OBJ)) {
-            echo '<article class="content">' . "\n";
-            echo "<h1>" . htmlspecialchars($row->heading) . "</h1>\n";
-
-            if (isset($_SESSION['user']) && $_SESSION['user']->security_level === 'sysop') {
-                echo '<a class="editBtn" href="edit_page.php?id=' . $row->id . '">Edit</a>' . "\n";
-            }
-
-            if ($row->image_path) {
-                echo '<figure class="imageStyle">' . "\n";
-                echo '<img src="' . $row->image_path . '" alt="' . htmlspecialchars($row->heading) . '">' . "\n";
-                echo '<figcaption>&nbsp;</figcaption>' . "\n";
-                echo "</figure>\n";
-            }
-            echo "<p>" . htmlspecialchars($row->content) . "</p>\n";
-            echo "</article>\n";
-        }
-        ?>    
+        <?php $display->read($basename, 'right') ?> 
     </div>
 </div>
 <?php
