@@ -16,8 +16,9 @@ class Display extends Read {
     public function display() {
         while ($this->row = $this->stmt->fetch(PDO::FETCH_OBJ)) {
             echo '<article class="content">' . "\n";
-            echo "<h1>" . htmlspecialchars($this->row->heading) . '<span class="date_added">Created on ' . $this->row->date_added . '</span></h1>' . "\n";
-
+            if ($this->row->heading) {
+                echo "<h1>" . htmlspecialchars($this->row->heading) . '<span class="date_added">Created on ' . $this->row->date_added . '</span></h1>' . "\n";
+            } 
             if (isset($_SESSION['user']) && ($_SESSION['user']->security_level === 'sysop' || $_SESSION['user']->user_id === $this->row->user_id)) {
                 echo '<a class="editBtn" href="edit_page.php?id=' . urlencode($this->row->id) . '">Edit</a>' . "\n";
             }
@@ -32,7 +33,7 @@ class Display extends Read {
             echo "</article>\n";
         }
     }
-    
+
     public function read($page_name, $column_pos) {
         $this->stmt = parent::READ($page_name, $column_pos);
         $this->display();
