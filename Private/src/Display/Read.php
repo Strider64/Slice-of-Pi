@@ -8,7 +8,9 @@ use Library\Database\Database as DB;
 abstract class Read {
 
     protected $query = \NULL;
-    public $stmt = \NULL;
+    protected $stmt = \NULL;
+    protected $data = [];
+
 
     public function read($page_name, $column_pos) {
         $db = DB::getInstance();
@@ -17,7 +19,8 @@ abstract class Read {
 
         $this->stmt = $pdo->prepare($this->query); // Prepare the query:
         $this->stmt->execute([':page_name' => $page_name, ':column_pos' => $column_pos]); // Execute the query with the supplied user's parameter(s):
-        return $this->stmt;
+        $this->data = $this->stmt->fetchAll(PDO::FETCH_OBJ);
+        return $this->data;
     }
     
     abstract public function display();
