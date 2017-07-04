@@ -11,7 +11,7 @@ class Display extends Read {
     protected $data = \NULL;
     protected $params = [];
     protected $query = \NULL;
-    
+
     public function __construct() {
         
     }
@@ -23,7 +23,10 @@ class Display extends Read {
                 echo "<h1>" . htmlspecialchars($this->row->heading) . '<span class="date_added">Created on ' . $this->row->date_added . '</span></h1>' . "\n";
             }
             if (isset($_SESSION['user']) && ($_SESSION['user']->security_level === 'sysop' || $_SESSION['user']->user_id === $this->row->user_id)) {
-                echo '<a class="editBtn" href="edit_page.php?id=' . urlencode($this->row->id) . '">Edit</a>' . "\n";
+                echo '<a class="modBtn" href="edit_page.php?id=' . urlencode($this->row->id) . '">Edit</a>' . "\n";
+            }
+            if (isset($_SESSION['user']) && $_SESSION['user']->security_level === 'sysop') {
+                echo '<a class="modBtn" href="delete_page.php?id=' . urlencode($this->row->id) . '">Delete</a>' . "\n";
             }
 
             if ($this->row->image_path) {
@@ -33,6 +36,7 @@ class Display extends Read {
                 echo "</figure>\n";
             }
             echo "<p>" . htmlspecialchars($this->row->content) . "</p>\n";
+
             echo "</article>\n";
         }
     }
