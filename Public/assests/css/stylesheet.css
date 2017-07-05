@@ -256,10 +256,11 @@ nav {
     color: #2262AD; }
 
 .mainContent {
-  background-color: #EDEAD9;
-  min-height: 600px;
-  padding: 20px;
-  margin-top: 140px; }
+  display: block;
+  width: 100%;
+  max-width: 1000px;
+  background-color: #fff;
+  margin: 140px auto 0; }
 
 #left_column {
   border-right: 5px solid #EDEAD9; }
@@ -271,26 +272,14 @@ nav {
   background-color: #fff; }
 
 article.content {
-  position: relative;
+  float: left;
+  display: inline-block;
+  width: 50%;
+  height: auto;
   background-color: #fff;
-  padding: 5px 20px; }
-  article.content .editBtn {
-    position: absolute;
-    top: 3px;
-    right: 5px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 0.6em;
-    text-decoration: none;
-    color: red; }
-    article.content .editBtn:hover {
-      color: green; }
+  padding: 20px; }
   article.content h1 {
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-    color: #2e2e2e; }
-  article.content p {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 0.9em;
-    line-height: 1.5;
     color: #2e2e2e; }
   article.content figure.imageStyle {
     -moz-box-shadow: 2px 2px 3px rgba(46, 46, 46, 0.6);
@@ -299,24 +288,49 @@ article.content {
     background-color: #f2f2f2;
     padding: 10px 15px;
     margin-bottom: 10px; }
-
-div#login_section article, div#register_section article {
-  position: relative;
-  padding: 20px; }
-  div#login_section article h1, div#register_section article h1 {
-    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-    font-size: 1.4em;
-    color: #348fef;
-    font-weight: bold; }
-  div#login_section article h1.errorHeader, div#register_section article h1.errorHeader {
-    color: red; }
-  div#login_section article p, div#register_section article p {
+  article.content p {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.0em;
+    font-size: 0.9em;
     line-height: 1.5;
-    color: #4C9CF1; }
-  div#login_section article p.error, div#register_section article p.error {
-    color: red; }
+    color: #2e2e2e; }
+  article.content div#system {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 40px;
+    background-color: #ccc;
+    margin-top: 10px; }
+    article.content div#system #edit, article.content div#system #delete {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      display: inline-block;
+      width: 60px;
+      height: 20px;
+      background-color: #EDEAD9;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.6em;
+      line-height: 20px;
+      text-decoration: none;
+      text-align: center;
+      color: red;
+      margin-right: 5px; }
+      article.content div#system #edit:hover, article.content div#system #delete:hover {
+        color: green; }
+    article.content div#system #edit {
+      right: 80px; }
+
+#login_section, #register_section {
+  padding: 20px; }
+  #login_section article, #register_section article {
+    padding: 10px; }
+    #login_section article h1, #register_section article h1 {
+      color: #4C8FEC; }
+    #login_section article p, #register_section article p {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 1.0em;
+      line-height: 1.2;
+      color: #4C8FEC; }
 
 form#login, form#register {
   display: block;
@@ -324,7 +338,7 @@ form#login, form#register {
   max-width: 440px;
   height: auto;
   background-color: #fff;
-  padding: 10px; }
+  margin-top: 10px; }
   form#login fieldset, form#register fieldset {
     border: 4px solid #4c8fec;
     padding: 20px; }
@@ -567,6 +581,114 @@ form#dataEntry {
     form#dataEntry input[type=submit]:hover {
       background-color: #2e6bb1; }
 
+form#contact {
+  float: left;
+  display: block;
+  width: 100%;
+  max-width: 50%;
+  height: auto;
+  background-color: #EDEAD9;
+  padding: 15px;
+  margin: 20px; }
+  form#contact fieldset {
+    border: 2px solid #4C9CF1;
+    padding: 20px; }
+  form#contact legend {
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    font-size: 1.2em;
+    color: #4C9CF1;
+    padding: 0 5px; }
+  form#contact label {
+    float: left;
+    display: block;
+    width: 100%;
+    max-width: 140px;
+    height: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.8em;
+    line-height: 30px;
+    color: #4C9CF1;
+    text-align: left;
+    padding: 0; }
+  form#contact input {
+    clear: right;
+    display: block;
+    width: 100%;
+    max-width: 280px;
+    height: 30px;
+    border: none;
+    outline: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.8em;
+    color: #2e2e2e;
+    padding: 0 5px;
+    margin-bottom: 10px; }
+  form#contact div.radioBlock {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto; }
+    form#contact div.radioBlock input[type=radio] {
+      display: none;
+      margin: 10px; }
+    form#contact div.radioBlock input[type=radio] + label.radioStyle {
+      display: inline-block;
+      width: 33.33333333333%;
+      height: 45px;
+      margin: -2px;
+      text-align: center;
+      text-transform: capitalize;
+      cursor: pointer;
+      color: #fff;
+      background-color: #4484CE;
+      border: 2px solid #fff;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.8em;
+      line-height: 43px;
+      margin: 10px auto 0 auto; }
+    form#contact div.radioBlock input[type=radio] + label.radioStyle:hover {
+      color: #ffa;
+      background-color: #2e2e2e; }
+    form#contact div.radioBlock input[type=radio]:checked + label.radioStyle {
+      background-image: none;
+      color: #fff;
+      background-color: #2e2e2e; }
+  form#contact label.textBox {
+    clear: both;
+    text-align: left;
+    padding: 0;
+    margin-top: 20px; }
+  form#contact textArea#comments {
+    resize: none;
+    border: none;
+    outline: none;
+    clear: both;
+    display: block;
+    width: 100%;
+    max-width: 600px;
+    height: 300px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.8em;
+    padding: 10px; }
+  form#contact .g-recaptcha {
+    margin-top: 20px; }
+  form#contact input[type=submit] {
+    outline: none;
+    border: none;
+    float: right;
+    display: block;
+    width: 100%;
+    max-width: 120px;
+    height: 40px;
+    cursor: pointer;
+    background-color: #4484CE;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.0em;
+    color: #fff;
+    text-transform: capitalize;
+    margin-top: 20px; }
+
 /* Calendar CSS Styling */
 div#calendarBox {
   display: block;
@@ -691,6 +813,59 @@ footer.footer-style {
 
   nav:hover ul {
     display: block; }
+
+  .mainContent {
+    display: block;
+    width: 100%;
+    max-width: 480px;
+    background-color: #fff;
+    margin: 140px 0 0; }
+
+  article.content {
+    width: 100%;
+    padding: 12px; }
+    article.content h1 {
+      font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+      color: #2e2e2e; }
+    article.content figure.imageStyle {
+      -moz-box-shadow: 2px 2px 3px rgba(46, 46, 46, 0.6);
+      -webkit-box-shadow: 2px 2px 3px rgba(46, 46, 46, 0.6);
+      box-shadow: 2px 2px 3px rgba(46, 46, 46, 0.6);
+      background-color: #f2f2f2;
+      padding: 15px 10px;
+      margin-bottom: 8px; }
+    article.content p {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 1.1em;
+      line-height: 1.5;
+      color: #2e2e2e; }
+    article.content div#system {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 40px;
+      background-color: #ccc;
+      margin-top: 10px; }
+      article.content div#system #edit, article.content div#system #delete {
+        position: absolute;
+        top: 7px;
+        right: 10px;
+        display: inline-block;
+        width: 80px;
+        height: 25px;
+        background-color: #EDEAD9;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 0.9em;
+        line-height: 25px;
+        text-decoration: none;
+        text-align: center;
+        color: red;
+        margin-right: 5px; }
+        article.content div#system #edit:hover, article.content div#system #delete:hover {
+          color: green;
+          background-color: #fff; }
+      article.content div#system #edit {
+        right: 110px; }
 
   form#dataEntry {
     background-color: #f2f2f2;
@@ -872,7 +1047,116 @@ footer.footer-style {
       margin-top: 10px;
       margin-right: 0px; }
       form#dataEntry input[type=submit]:hover {
-        background-color: #2e6bb1; } }
+        background-color: #2e6bb1; }
+
+  form#contact {
+    float: none;
+    display: block;
+    width: 100%;
+    max-width: 480px;
+    height: auto;
+    background-color: #EDEAD9;
+    padding: 15px;
+    margin: 0 auto; }
+    form#contact fieldset {
+      border: 2px solid #4484CE;
+      padding: 20px; }
+    form#contact legend {
+      font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+      font-size: 1.4em;
+      color: #4484CE;
+      padding: 0 5px; }
+    form#contact label {
+      float: left;
+      display: block;
+      width: 100%;
+      max-width: 160px;
+      height: 30px;
+      background-color: #4484CE;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 1.0em;
+      line-height: 30px;
+      color: #fff;
+      text-align: left;
+      padding: 0 10px; }
+    form#contact input {
+      clear: right;
+      display: block;
+      width: 100%;
+      max-width: 165px;
+      height: 30px;
+      border: none;
+      outline: none;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.8em;
+      color: #2e2e2e;
+      padding: 0 5px;
+      margin-bottom: 10px; }
+    form#contact div.radioBlock {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      margin: 0 auto; }
+      form#contact div.radioBlock input[type=radio] {
+        display: none;
+        margin: 10px; }
+      form#contact div.radioBlock input[type=radio] + label.radioStyle {
+        display: inline-block;
+        width: 33.33333333333%;
+        height: 45px;
+        margin: -2px;
+        text-align: center;
+        text-transform: capitalize;
+        cursor: pointer;
+        color: #fff;
+        background-color: #4484CE;
+        border: 2px solid #fff;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 0.8em;
+        line-height: 43px;
+        margin: 10px auto 0 auto; }
+      form#contact div.radioBlock input[type=radio] + label.radioStyle:hover {
+        color: #ffa;
+        background-color: #2e2e2e; }
+      form#contact div.radioBlock input[type=radio]:checked + label.radioStyle {
+        background-image: none;
+        color: #fff;
+        background-color: #2e2e2e; }
+    form#contact label.textBox {
+      clear: both;
+      text-align: left;
+      padding: 0 10px;
+      margin-top: 20px; }
+    form#contact textArea#comments {
+      resize: none;
+      border: none;
+      outline: none;
+      clear: both;
+      display: block;
+      width: 100%;
+      max-width: 600px;
+      height: 200px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.8em;
+      padding: 10px; }
+    form#contact .g-recaptcha {
+      margin-top: 20px; }
+    form#contact input[type=submit] {
+      outline: none;
+      border: none;
+      float: right;
+      display: block;
+      width: 100%;
+      max-width: 80px;
+      height: 30px;
+      cursor: pointer;
+      background-color: #4484CE;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 1.0em;
+      color: #fff;
+      text-transform: capitalize;
+      margin-top: 20px; } }
 /* TABLET STYLING */
 @media only screen and (min-width: 481px) and (max-width: 999px) {
   #menu-icon {
