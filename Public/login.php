@@ -63,7 +63,7 @@ require_once '../private/includes/header.inc.php';
     <?php if (!$invalid) { ?>
         <div id="login_section" class="span6">
             <article>
-                <h1>Slice of Pi Login Section</h1>
+                <h1>Login Section</h1>
                 <p>This is where you login in to gain access to member only pages. This website is using a new and improved PHP login system that improves security of users personal information.</p>
             </article>
             <form id="login" action="<?php $basename; ?>" method="post" autocomplete="off">
@@ -107,7 +107,7 @@ require_once '../private/includes/header.inc.php';
     ?>
     <div id="register_section" class="span6">
         <article>
-            <h1>Slice of Pi Registration Section</h1>
+            <h1>Registration Section</h1>
             <p>Not a member? No problem! Just register using the form below and you will become a member in no time.</p>
             <form id="register" name="<?php $basename; ?>" method="post" autocomplete="off">
                 <fieldset>

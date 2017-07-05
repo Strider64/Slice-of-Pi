@@ -4,13 +4,12 @@ require_once '../private/initialize.php';
 use Library\ProcessImage\ProcessImage as Rename;
 use Library\Resize\Resize;
 use Library\CMS\CMS;
-
 use Library\Display\Display;
 
 protected_page();
 
-$sysop = ['<option value="index.php" selected>Home Page</option>', '<option value="about.php">About Page</option>', '<option value="members_page.php">Member Blog Page</option>'];
-$member = ['<option value="members_page.php">Member Blog Page</option>'];
+$sysop = ['<option value="index.php" selected>Home Page</option>', '<option value="about.php">About Page</option>', '<option value="blog.php">Blog Page</option>'];
+$member = ['<option value="blog.php">Blog Page</option>'];
 
 $cms = new CMS();
 $display = new Display();
@@ -68,7 +67,7 @@ if ($upload && $upload === 'enter') {
      */
     $result = $cms->create($data);
     if ($result) {
-        header("Location: members_page.php");
+        header("Location: " . $result);
         exit();
     }
 }
@@ -101,12 +100,12 @@ require_once '../private/includes/header.inc.php';
                 <div class="maxl">
                     <?php if ($_SESSION['user']->security_level === 'sysop') { ?>
                         <label class="radio inline"> 
-                            <input type="radio" name="column_pos" value="left">
+                            <input type="radio" name="column_pos" value="left" checked>
                             <span>Left Column</span> 
                         </label>
                     <?php } ?>
                     <label class="radio inline"> 
-                        <input type="radio" name="column_pos" value="right" checked>
+                        <input type="radio" name="column_pos" value="right">
                         <span>Right Column</span> 
                     </label>
 
@@ -137,10 +136,9 @@ require_once '../private/includes/header.inc.php';
             </fieldset>
         </form>
     </div>
-    <div class="span6">   
-        <?php  $display->read($basename, 'right'); ?>
-    </div>
+    <article class="content">
+
+    </article>
 </div>
 <?php
 require_once '../private/includes/footer.inc.php';
-

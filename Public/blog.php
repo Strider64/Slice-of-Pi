@@ -17,4 +17,3 @@ require_once '../private/includes/header.inc.php';
 </div>
 <?php
 require_once '../private/includes/footer.inc.php';
-

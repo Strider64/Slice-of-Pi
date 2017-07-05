@@ -12,13 +12,12 @@ $calendar->phpDate();
 require_once '../private/includes/header.inc.php';
 ?>
 <div class="container mainContent">
-
-    <div id="left_column" class="span6">
+    <article class="content">
         <?php $display->read($basename, 'left') ?> 
-    </div>
-    <div id="right_column" class="span6">
+    </article>
+    <article class="content">
         <?php $display->read($basename, 'right') ?> 
-    </div>
+    </article>
 </div>
 <?php
 require_once '../private/includes/footer.inc.php';
