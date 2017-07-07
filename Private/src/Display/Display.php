@@ -18,16 +18,10 @@ class Display extends Read {
 
     public function display() {
         foreach ($this->data as $this->row) {
-            echo '<article class="content">' . "\n";
             if ($this->row->heading) {
-                echo "<h1>" . htmlspecialchars($this->row->heading) . '<span class="date_added">Created on ' . $this->row->date_added . '</span></h1>' . "\n";
-            }
-            if (isset($_SESSION['user']) && ($_SESSION['user']->security_level === 'sysop' || $_SESSION['user']->user_id === $this->row->user_id)) {
-                echo '<a class="modBtn" href="edit_page.php?id=' . urlencode($this->row->id) . '">Edit</a>' . "\n";
-            }
-            if (isset($_SESSION['user']) && $_SESSION['user']->security_level === 'sysop') {
-                echo '<a class="modBtn" href="delete_page.php?id=' . urlencode($this->row->id) . '">Delete</a>' . "\n";
-            }
+                echo "<h1>" . htmlspecialchars($this->row->heading) . "</h1>\n";
+                echo '<h2 class="subheading">Created on ' . htmlspecialchars($this->row->date_added) . " by " . htmlspecialchars($this->row->author) . "</h2>\n";
+            } 
 
             if ($this->row->image_path) {
                 echo '<figure class="imageStyle">' . "\n";
@@ -36,8 +30,12 @@ class Display extends Read {
                 echo "</figure>\n";
             }
             echo "<p>" . htmlspecialchars($this->row->content) . "</p>\n";
-
-            echo "</article>\n";
+            if (isset($_SESSION['user']) && ($_SESSION['user']->security_level === 'sysop' ||  $_SESSION['user']->id === $this->row->user_id)) {
+                echo '<div id="system">' . "\n";
+                echo '<a id="edit" href="edit_page.php?id=' . urlencode($this->row->id) . '">Edit</a>' . "\n";
+                echo '<a id="delete" href="delete_page.php?id=' . urlencode($this->row->id) . '">Delete</a>' . "\n";
+                echo "</div>\n";
+            }
         }
     }
 
