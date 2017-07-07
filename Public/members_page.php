@@ -129,7 +129,7 @@ require_once '../private/includes/header.inc.php';
                 <input type="hidden" name="action" value="enter">
                 <input id="imgBtn" type="file" name="file">
                 <label class="inputLabel" for="heading">Heading</label>
-                <input id="heading" type="text" name="heading" value="" tabindex="1" autofocus>
+                <input id="heading" type="text" name="heading" value="" tabindex="1" required autofocus>
                 <label class="textareaLabel" for="content">Content</label>
                 <textarea id="content" name="content" tabindex="2"></textarea>
                 <input type="submit" name="submit" value="enter">
