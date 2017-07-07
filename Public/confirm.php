@@ -24,19 +24,18 @@ if (isset($confirmation_code)) {
 require_once '../private/includes/header.inc.php';
 ?>
 <div class="container mainContent">
-    <div id="left_section" class="span7">
-        <article>
-            <?php
-                if ($confirmed) {
-                    echo "<h1>Thank You!</h1>";
-                    echo '<p>Slice of Pi really appreciates you taking your time in order to upgrade your account to member. This entitles you to write access to blogs and other member-only areas of this website.</p>';
-                    echo '<p>Please click on the login button on the top right hand of the screen.</p>';
-                } else {
-                    echo '<h1 class="errorHeader">You already activated your account!</h1>' . "\n";
-                }
-            ?>                                    
-        </article>
-    </div>
+    <article class="content">
+        <?php
+        if ($confirmed) {
+            echo "<h1>Thank You!</h1>";
+            echo '<p>Slice of Pi really appreciates you taking your time in order to upgrade your account to member. This entitles you to write access to blogs and other member-only areas of this website.</p>';
+            echo '<p>Please click on the login button on the top right hand of the screen.</p>';
+        } else {
+            echo '<h1 class="errorHeader">You already activated your account!</h1>' . "\n";
+        }
+        ?>                                    
+    </article>
 </div>
-</body>
-</html>
+
+<?php
+require_once '../private/includes/footer.inc.php';

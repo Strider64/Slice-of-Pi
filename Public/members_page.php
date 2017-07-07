@@ -1,12 +1,14 @@
 <?php
 require_once '../private/initialize.php';
 
-use Library\ProcessImage\ProcessImage as Rename;
+use Library\ProcessImage\ProcessImage as Process;
 use Library\Resize\Resize;
 use Library\CMS\CMS;
 use Library\Display\Display;
 
 protected_page();
+
+$check = [];
 
 $sysop = ['<option value="index.php" selected>Home Page</option>', '<option value="about.php">About Page</option>', '<option value="blog.php">Blog Page</option>'];
 $member = ['<option value="blog.php">Blog Page</option>'];
@@ -16,31 +18,30 @@ $display = new Display();
 
 $upload = filter_input(INPUT_POST, 'action', FILTER_SANITIZE_URL);
 $data['user_id'] = filter_input(INPUT_POST, 'user_id', FILTER_SANITIZE_NUMBER_INT);
-if ($_SESSION['user']->security_level === 'sysop') {
-    $data['page_name'] = filter_input(INPUT_POST, 'page_name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-} else {
-    $data['page_name'] = 'members_page.php';
-}
-if ($_SESSION['user']->security_level === 'sysop') {
-    $data['column_pos'] = filter_input(INPUT_POST, 'column_pos', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-} else {
-    $data['column_pos'] = 'right';
-}
+$data['author'] = $_SESSION['user']->full_name;
+$data['page_name'] = filter_input(INPUT_POST, 'page_name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+$data['column_pos'] = filter_input(INPUT_POST, 'column_pos', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
 $data['heading'] = filter_input(INPUT_POST, 'heading', FILTER_DEFAULT);
 $data['content'] = filter_input(INPUT_POST, 'content', FILTER_DEFAULT);
 
 $image_check = filter_input(INPUT_POST, 'insert_image', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-if ($upload && $upload === 'enter') {
-    if ($image_check === 'yes') {
-        $file = $_FILES['file']; // Assign image data to $file array:
-        //echo "<pre>" . print_r($file, 1) . "</pre>\n";
-        $imgObject = new Rename($file);
 
-        $status = $imgObject->processImage();
+if ($image_check === "yes" && $_FILES['file']['error'] !== 4) {
 
-        if ($status) {
-            $data['image_path'] = $imgObject->saveIMG();
-        }
+    $file = $_FILES['file']; // Assign image data to $file array:
+    //echo "<pre>" . print_r($file, 1) . "</pre>\n";
+    $imgObject = new Process($file, $_SESSION['user']->username);
+
+    $check['image_status'] = $imgObject->processImage();
+    $check['file_type'] = $imgObject->checkFileType();
+    $check['file_ext'] = $imgObject->checkFileExt();
+    //echo "<pre>" . print_r($check, 1) . "</pre>\n";
+
+    if (in_array(TRUE, $check)) {
+        $errMsg = "There's something wrong with the image file!<b>";
+    } else {
+        $data['image_path'] = $imgObject->saveIMG();
 
         // *** 1)  Create a new instance of class Resize:
         $resizePic = new Resize($data['image_path']);
@@ -58,17 +59,16 @@ if ($upload && $upload === 'enter') {
         if (filter_input(INPUT_SERVER, 'SERVER_NAME', FILTER_SANITIZE_URL) !== "localhost") {
             $data['image_path'] = str_ireplace("../public/", "https://www.pepster.com/", $data['image_path']);
         }
-    } else {
-        $data['image_path'] = NULL;
-    }
 
-    /*
-     * Save all the data from the form to the database table: cms
-     */
-    $result = $cms->create($data);
-    if ($result) {
-        header("Location: " . $result);
-        exit();
+
+        /*
+         * Save all the data from the form to the database table: cms
+         */
+        $result = $cms->create($data);
+        if ($result) {
+            header("Location: " . $result);
+            exit();
+        }
     }
 }
 
@@ -98,12 +98,12 @@ require_once '../private/includes/header.inc.php';
                     </select>
                 </div>
                 <div class="maxl">
-                    <?php if ($_SESSION['user']->security_level === 'sysop') { ?>
-                        <label class="radio inline"> 
-                            <input type="radio" name="column_pos" value="left" checked>
-                            <span>Left Column</span> 
-                        </label>
-                    <?php } ?>
+
+                    <label class="radio inline"> 
+                        <input type="radio" name="column_pos" value="left" checked>
+                        <span>Left Column</span> 
+                    </label>
+
                     <label class="radio inline"> 
                         <input type="radio" name="column_pos" value="right">
                         <span>Right Column</span> 
