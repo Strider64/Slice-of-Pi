@@ -52,13 +52,7 @@ class ProcessImage {
 
     public function processImage() {
         $this->status = $this->file_contains_php();
-//        $this->setFileName();
-//        $this->checkFileType();
-//        $this->checkFileExt();
-//        //$this->checkFileSize();
-//        $this->getTMPName();
 
-        
         if ($this->status) {
             return $this->status; // Bad Image
         } else {
