@@ -12,7 +12,7 @@ require_once '../private/includes/header.inc.php';
         <?php $display->read($basename, 'left') ?> 
     </article>
     <article class="content">
-        <?php $display->read($basename, 'right') ?> 
+        <?php $display->read($basename, 'right', 'DESC') ?> 
     </article>
 </div>
 <?php

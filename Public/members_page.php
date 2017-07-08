@@ -19,9 +19,13 @@ $display = new Display();
 $upload = filter_input(INPUT_POST, 'action', FILTER_SANITIZE_URL);
 $data['user_id'] = filter_input(INPUT_POST, 'user_id', FILTER_SANITIZE_NUMBER_INT);
 $data['author'] = $_SESSION['user']->full_name;
-$data['page_name'] = filter_input(INPUT_POST, 'page_name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-$data['column_pos'] = filter_input(INPUT_POST, 'column_pos', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-
+if ($_SESSION['user']->security_level === 'sysop') {
+    $data['page_name'] = filter_input(INPUT_POST, 'page_name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $data['column_pos'] = filter_input(INPUT_POST, 'column_pos', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+} else {
+    $data['page_name'] = 'blog.php';
+    $data['column_pos'] = 'right';
+}
 $data['heading'] = filter_input(INPUT_POST, 'heading', FILTER_DEFAULT);
 $data['content'] = filter_input(INPUT_POST, 'content', FILTER_DEFAULT);
 
@@ -81,35 +85,37 @@ require_once '../private/includes/header.inc.php';
         <form id="dataEntry" action="members_page.php" method="post" enctype="multipart/form-data">
             <fieldset>
 
-                <legend>Page, Column and Image</legend>
-                <div id="mainselection">
-                    <select name="page_name">
-                        <?php
-                        if ($_SESSION['user']->security_level === 'sysop') {
-                            foreach ($sysop as $key => $value) {
-                                echo $value;
-                            }
-                        } else {
-                            foreach ($member as $key => $value) {
-                                echo $value;
-                            }
-                        }
-                        ?>
-                    </select>
-                </div>
-                <div class="maxl">
 
-                    <label class="radio inline"> 
-                        <input type="radio" name="column_pos" value="left" checked>
-                        <span>Left Column</span> 
-                    </label>
+                <?php
+                if ($_SESSION['user']->security_level === 'sysop') {
+                    echo "<legend>Page, Column and Image</legend>\n";
+                    echo '<div id="mainselection">' . "\n";
+                    echo '<select name="page_name">' . "\n";
+                    foreach ($sysop as $key => $value) {
+                        echo $value;
+                    }
+                    echo "</select>\n";
+                    echo "</div>\n";
+                } else {
+                    echo "<legend>Do you want to include an image?</legend>\n";
+                }
+                ?>
 
-                    <label class="radio inline"> 
-                        <input type="radio" name="column_pos" value="right">
-                        <span>Right Column</span> 
-                    </label>
+                <?php if ($_SESSION['user']->security_level === 'sysop') { ?>
+                    <div class="maxl">
+                        <label class="radio inline"> 
+                            <input type="radio" name="column_pos" value="left" checked>
+                            <span>Left Column</span> 
+                        </label>
 
-                </div>
+                        <label class="radio inline"> 
+                            <input type="radio" name="column_pos" value="right">
+                            <span>Right Column</span> 
+                        </label>
+                    </div>
+                <?php } ?>
+
+
 
                 <div class="maxl">
                     <label class="radio inline">
