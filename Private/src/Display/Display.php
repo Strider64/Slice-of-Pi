@@ -36,11 +36,12 @@ class Display extends Read {
                 echo '<a id="delete" href="delete_page.php?id=' . urlencode($this->row->id) . '">Delete</a>' . "\n";
                 echo "</div>\n";
             }
+            echo "<br>\n";
         }
     }
 
-    public function read($page_name, $column_pos) {
-        $this->data = parent::Read($page_name, $column_pos);
+    public function read($page_name, $column_pos, $sort_by = "ASC") {
+        $this->data = parent::Read($page_name, $column_pos, $sort_by);
         $this->display();
     }
 
