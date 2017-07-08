@@ -59,6 +59,16 @@ class CMS {
         return \TRUE;
     }
 
+    public function readImagePath($id = NULL) {
+        $db = DB::getInstance();
+        $pdo = $db->getConnection();
+        $this->query = "SELECT image_path FROM cms WHERE id=:id";
+        $this->stmt = $pdo->prepare($this->query);
+        $this->stmt->execute([':id' => $id]);
+        $this->result = $this->stmt->fetch(PDO::FETCH_OBJ);
+        return $this->result->image_path;
+    }
+
     public function deleteRecord(int $id = NULL) {
         $db = DB::getInstance();
         $pdo = $db->getConnection();
@@ -67,6 +77,7 @@ class CMS {
         $this->stmt->execute([':id' => $id]);
         return \TRUE;
     }
+
     public function delete($id = NULL) {
         unset($id);
         unset($this->user);
