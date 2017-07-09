@@ -13,10 +13,16 @@ require_once '../private/includes/header.inc.php';
 ?>
 <div class="container mainContent">
     <article class="content">
-        <?php $display->read($basename, 'left') ?> 
+        <?php
+        $display->read($basename, 'left');
+        $display->display();
+        ?> 
     </article>
     <article class="content">
-        <?php $display->read($basename, 'right') ?> 
+        <?php
+        $display->read($basename, 'right');
+        $display->display();
+        ?> 
     </article>
 </div>
 <?php
