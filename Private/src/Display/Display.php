@@ -2,7 +2,7 @@
 
 namespace Library\Display;
 
-use PDO;
+use  Library\Read\Read;
 
 class Display extends Read {
 
@@ -42,7 +42,6 @@ class Display extends Read {
 
     public function read($page_name, $column_pos, $sort_by = "ASC") {
         $this->data = parent::Read($page_name, $column_pos, $sort_by);
-        $this->display();
     }
 
 }
