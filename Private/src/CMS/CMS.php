@@ -10,6 +10,7 @@ class CMS {
     protected $query = \NULL;
     public $stmt = \NULL;
     protected $password = \NULL;
+    public $page_name = \NULL;
     public $cms = \NULL;
     public $result = \NULL;
     public $count = \NULL;
@@ -48,6 +49,15 @@ class CMS {
         $this->result = $this->stmt->fetch(PDO::FETCH_OBJ);
         return $this->result;
     }
+    
+    protected function pageName($id) {
+        $db = DB::getInstance();
+        $pdo = $db->getConnection();
+        $this->stmt = $pdo->prepare('SELECT page_name FROM cms WHERE id=:id');
+        $this->stmt->execute([':id' => $id]);
+        $this->result = $this->stmt->fetch(PDO::FETCH_OBJ);
+        return $this->result->page_name;
+    }
 
     public function update(array $data) {
         $db = DB::getInstance();
@@ -55,8 +65,8 @@ class CMS {
         $this->query = 'UPDATE cms SET heading=:heading, content=:content, date_updated=NOW() WHERE id =:id';
         $this->stmt = $pdo->prepare($this->query);
         $this->result = $this->stmt->execute([':heading' => $data['heading'], ':content' => $data['content'], ':id' => $data['id']]);
-
-        return \TRUE;
+        $this->page_name = $this->pageName($data['id']);
+        return $this->page_name;
     }
 
     public function readImagePath($id = NULL) {
