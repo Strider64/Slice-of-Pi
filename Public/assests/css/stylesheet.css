@@ -270,7 +270,7 @@ nav {
 
 form#dataEntry {
   background-color: #f2f2f2;
-  padding: 15px; }
+  padding: 15px 20px; }
   form#dataEntry fieldset {
     border: 2px solid #4C9CF1;
     padding: 15px;
@@ -389,10 +389,9 @@ form#dataEntry {
     max-width: 100px;
     height: 40px;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 0.8em;
+    font-size: 1.2em;
     line-height: 20px;
     color: #4C8FEC;
-    font-weight: bold;
     text-transform: capitalize;
     padding: 2px 0px; }
   form#dataEntry input {
@@ -404,17 +403,16 @@ form#dataEntry {
     border: none;
     outline: none;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 0.8em;
+    font-size: 1.0em;
     color: #2e2e2e;
-    font-weight: bold;
     height: 30px;
     padding-left: 5px;
     margin-bottom: 10px; }
   form#dataEntry label.textareaLabel {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 0.8em;
-    color: #4C8FEC;
-    font-weight: bold; }
+    font-size: 1.2em;
+    line-height: 1.5;
+    color: #4C8FEC; }
   form#dataEntry textarea {
     border: none;
     outline: none;
@@ -423,8 +421,8 @@ form#dataEntry {
     max-width: 100%;
     height: 400px;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 0.9em;
-    line-height: 1.2;
+    font-size: 1.0em;
+    line-height: 1.5;
     padding: 10px 5px;
     margin-top: 2px; }
   form#dataEntry input[type=submit] {
@@ -585,7 +583,7 @@ section {
     display: block;
     width: 100%;
     height: auto;
-    background-color: #fff;
+    background-color: #F2F2F2;
     padding: 10px;
     margin-top: 140px; }
     div.loginPage #login_section, div.loginPage #register_section {
@@ -600,8 +598,9 @@ section {
           line-height: 1.5;
           color: #4C8FEC; }
     div.loginPage form#login, div.loginPage form#register {
-      padding: 0 5px; }
+      padding: 0px; }
       div.loginPage form#login fieldset, div.loginPage form#register fieldset {
+        background-color: #F2F2F2;
         border: 1px solid #4c8fec;
         padding: 10px; }
       div.loginPage form#login legend, div.loginPage form#register legend {
@@ -658,19 +657,19 @@ section {
         div.loginPage form#login input[type=submit]:hover, div.loginPage form#register input[type=submit]:hover {
           background-color: #2e6bb1; }
 
-  article.content {
+  article.content, article.blogContent {
     width: 100%;
     padding: 12px; }
-    article.content h1 {
+    article.content h1, article.blogContent h1 {
       font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
       color: #2e2e2e; }
-    article.content h2.subheading {
+    article.content h2.subheading, article.blogContent h2.subheading {
       font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
       color: #2e2e2e;
       font-size: 0.8em;
       line-height: 1.5em;
       font-style: italic; }
-    article.content figure.imageStyle {
+    article.content figure.imageStyle, article.blogContent figure.imageStyle {
       -moz-box-shadow: 2px 2px 3px rgba(46, 46, 46, 0.6);
       -webkit-box-shadow: 2px 2px 3px rgba(46, 46, 46, 0.6);
       box-shadow: 2px 2px 3px rgba(46, 46, 46, 0.6);
@@ -678,20 +677,20 @@ section {
       padding: 20px 15px 5px;
       margin-top: 8px;
       margin-bottom: 8px; }
-    article.content p {
+    article.content p, article.blogContent p {
       font-family: Arial, Helvetica, sans-serif;
       font-size: 1.1em;
       line-height: 1.5;
       color: #2e2e2e;
       white-space: pre-line; }
-    article.content div#system {
+    article.content div#system, article.blogContent div#system {
       position: relative;
       display: block;
       width: 100%;
       height: 40px;
       background-color: #ccc;
       margin-top: 10px; }
-      article.content div#system #edit, article.content div#system #delete {
+      article.content div#system #edit, article.content div#system #delete, article.blogContent div#system #edit, article.blogContent div#system #delete {
         position: absolute;
         top: 7px;
         right: 10px;
@@ -706,11 +705,15 @@ section {
         text-align: center;
         color: red;
         margin-right: 5px; }
-        article.content div#system #edit:hover, article.content div#system #delete:hover {
+        article.content div#system #edit:hover, article.content div#system #delete:hover, article.blogContent div#system #edit:hover, article.blogContent div#system #delete:hover {
           color: green;
           background-color: #fff; }
-      article.content div#system #edit {
+      article.content div#system #edit, article.blogContent div#system #edit {
         right: 110px; }
+
+  article.blogContent {
+    background-color: #fff;
+    margin-top: 140px; }
 
   form#dataEntry {
     background-color: #f2f2f2;
@@ -1028,6 +1031,93 @@ section {
   #menu-icon {
     display: none; }
 
+  div.outerBlog {
+    background-color: #F2F2F2;
+    width: 100%;
+    max-width: 1000px;
+    margin-top: 140px; }
+
+  article.blogContent {
+    -moz-box-shadow: 2px 2px 3px rgba(46, 46, 46, 0.4);
+    -webkit-box-shadow: 2px 2px 3px rgba(46, 46, 46, 0.4);
+    box-shadow: 2px 2px 3px rgba(46, 46, 46, 0.4);
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+    display: block;
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px auto; }
+    article.blogContent h1 {
+      font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+      color: #000;
+      font-size: 2.0em;
+      line-height: 1.0;
+      margin-left: 50px; }
+    article.blogContent h2.subheading {
+      font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+      color: #000;
+      font-size: 1.0em;
+      font-style: italic;
+      margin-left: 50px; }
+    article.blogContent hr {
+      margin: 5px 0 20px; }
+    article.blogContent figure.imageStyle {
+      -moz-box-shadow: 2px 2px 3px rgba(46, 46, 46, 0.6);
+      -webkit-box-shadow: 2px 2px 3px rgba(46, 46, 46, 0.6);
+      box-shadow: 2px 2px 3px rgba(46, 46, 46, 0.6);
+      display: block;
+      width: 80%;
+      max-width: 600px;
+      height: 400px;
+      background-color: #f2f2f2;
+      margin: 10px auto; }
+      article.blogContent figure.imageStyle img {
+        display: block;
+        width: 100%;
+        max-width: 600px;
+        height: 400px;
+        padding: 20px; }
+    article.blogContent p {
+      width: 86%;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 1.1em;
+      line-height: 1.5;
+      color: #000;
+      white-space: pre-line;
+      padding: 10px 20px;
+      margin: 0 auto; }
+    article.blogContent div#system {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 40px;
+      background-color: #ccc;
+      margin-top: 10px;
+      margin-bottom: 10px; }
+      article.blogContent div#system #edit, article.blogContent div#system #delete {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        display: inline-block;
+        width: 60px;
+        height: 20px;
+        background-color: #EDEAD9;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 0.6em;
+        line-height: 20px;
+        text-decoration: none;
+        text-align: center;
+        color: red;
+        margin-right: 5px; }
+        article.blogContent div#system #edit:hover, article.blogContent div#system #delete:hover {
+          color: green; }
+      article.blogContent div#system #edit {
+        right: 80px; }
+
   article.content {
     float: left;
     display: block;
@@ -1204,8 +1294,8 @@ section {
     width: 100%;
     max-width: 1000px;
     height: 100%;
-    min-height: 750px;
-    background-color: #fff;
+    min-height: 810px;
+    background-color: #F2F2F2;
     padding: 5px;
     margin: 140px auto 0; }
     div.loginPage #login_section, div.loginPage #register_section {
@@ -1230,11 +1320,14 @@ section {
       width: 100%;
       max-width: 440px;
       height: auto;
-      background-color: #fff;
+      background-color: #F2F2F2;
       margin-top: 10px; }
       div.loginPage form#login fieldset, div.loginPage form#register fieldset {
+        background-color: #fff;
         border: 2px solid #4c8fec;
-        padding: 20px; }
+        padding: 20px;
+        /* .slideThree */
+        /* end .slideThree */ }
         div.loginPage form#login fieldset legend, div.loginPage form#register fieldset legend {
           font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
           font-size: 1.2em;
@@ -1250,9 +1343,6 @@ section {
           text-transform: capitalize;
           padding: 2px 2px 0px; }
         div.loginPage form#login fieldset input, div.loginPage form#register fieldset input {
-          -moz-box-shadow: inset 0 0 9px rgba(76, 143, 236, 0.6);
-          -webkit-box-shadow: inset 0 0 9px rgba(76, 143, 236, 0.6);
-          box-shadow: inset 0 0 9px rgba(76, 143, 236, 0.6);
           clear: both;
           display: block;
           width: 100%;
@@ -1260,13 +1350,70 @@ section {
           height: 40px;
           border: none;
           outline: none;
-          background-color: #ccc;
+          background-color: #F2F2F2;
           font-family: Arial, Helvetica, sans-serif;
           font-size: 0.8em;
           color: #4C8FEC;
           font-weight: bold;
           padding-left: 5px;
           margin-bottom: 10px; }
+        div.loginPage form#login fieldset h2, div.loginPage form#register fieldset h2 {
+          float: left;
+          display: block;
+          width: auto;
+          height: 50px;
+          font-family: Arial, Helvetica, sans-serif;
+          font-size: 1.0em;
+          line-height: 25px;
+          color: #4C8FEC;
+          margin-top: 10px;
+          margin-right: 10px; }
+        div.loginPage form#login fieldset .slideThree, div.loginPage form#register fieldset .slideThree {
+          float: left;
+          display: block;
+          width: 80px;
+          height: 26px;
+          background: #333;
+          position: relative;
+          top: 10px;
+          border-radius: 50px;
+          box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2); }
+          div.loginPage form#login fieldset .slideThree:after, div.loginPage form#register fieldset .slideThree:after {
+            content: 'NO';
+            color: red;
+            position: absolute;
+            top: 0;
+            right: 10px;
+            z-index: 0;
+            font: 12px/26px Arial, sans-serif;
+            font-weight: bold;
+            text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.15); }
+          div.loginPage form#login fieldset .slideThree:before, div.loginPage form#register fieldset .slideThree:before {
+            content: 'YES';
+            color: #00b300;
+            position: absolute;
+            left: 10px;
+            z-index: 0;
+            font: 12px/26px Arial, sans-serif;
+            font-weight: bold; }
+          div.loginPage form#login fieldset .slideThree label, div.loginPage form#register fieldset .slideThree label {
+            display: block;
+            width: 34px;
+            height: 20px;
+            cursor: pointer;
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            z-index: 1;
+            background: #fcfff4;
+            background: linear-gradient(to bottom, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+            border-radius: 50px;
+            transition: all 0.4s ease;
+            box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3); }
+          div.loginPage form#login fieldset .slideThree input[type=checkbox], div.loginPage form#register fieldset .slideThree input[type=checkbox] {
+            visibility: hidden; }
+            div.loginPage form#login fieldset .slideThree input[type=checkbox]:checked + label, div.loginPage form#register fieldset .slideThree input[type=checkbox]:checked + label {
+              left: 43px; }
         div.loginPage form#login fieldset input[type=submit], div.loginPage form#register fieldset input[type=submit] {
           cursor: pointer;
           clear: both;
