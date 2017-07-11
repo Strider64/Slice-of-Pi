@@ -57,7 +57,7 @@ function request_user_agent_matches_session() {
 
 // Has too much time passed since the last login?
 function last_login_is_recent() {
-    $max_elapsed = 60 * 60 * 24; // 1 day
+    $max_elapsed = 60 * 60 * 24 *7; // 7 days:
     // return false if value is not set
     if (!isset($_SESSION['last_login'])) {
         return false;
