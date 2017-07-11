@@ -24,7 +24,7 @@ if ($_SESSION['user']->security_level === 'sysop') {
     $data['column_pos'] = filter_input(INPUT_POST, 'column_pos', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 } else {
     $data['page_name'] = 'blog.php';
-    $data['column_pos'] = 'right';
+    $data['column_pos'] = 'left';
 }
 $data['heading'] = filter_input(INPUT_POST, 'heading', FILTER_DEFAULT);
 $data['content'] = filter_input(INPUT_POST, 'content', FILTER_DEFAULT);

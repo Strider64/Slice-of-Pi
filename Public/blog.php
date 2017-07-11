@@ -6,16 +6,10 @@ use Library\Display\Display;
 $display = new Display();
 require_once '../private/includes/header.inc.php';
 ?>
-<div class="container mainContent">
-    <article class="content">
+<div class="container outerBlog">
+    <article class="blogContent">
         <?php
-        $display->read($basename, 'left');
-        $display->display();
-        ?> 
-    </article>
-    <article class="content">
-        <?php
-        $display->read($basename, 'right');
+        $display->read($basename, 'left', 'DESC');
         $display->display();
         ?> 
     </article>

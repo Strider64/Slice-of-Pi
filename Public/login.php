@@ -34,7 +34,11 @@ if (isset($submit) && $submit === 'register') {
     $data['full_name'] = filter_input(INPUT_POST, 'full_name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $data['email'] = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
     $data['verify_email'] = filter_input(INPUT_POST, 'verify_email', FILTER_SANITIZE_EMAIL);
-
+    $data['private'] = filter_input(INPUT_POST, 'private', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    if (empty($data['private'])) {
+        $data['private'] =  'no';
+    }
+    
     $validate = new FormValidation($data);
 
     if ($validate->result) {
@@ -128,6 +132,13 @@ require_once '../private/includes/header.inc.php';
                 <input id="email" type="email" name="email" value="<?php echo(isset($validate->valid['validEmail']) && $validate->valid['validEmail']) ? $validate->data['email'] : NULL; ?>" tabindex="8">
                 <label for="verify_email">verify email</label>
                 <input id="verify_email" type="email" name="verify_email" value="<?php echo(isset($validate->valid['verifyEmail']) && $validate->valid['verifyEmail']) ? $validate->data['verify_email'] : NULL; ?>" tabindex="9">
+                <h2>Do you want your posts seen?</h2>
+                <div class="slideThree">
+                    <input id="slideThree" type="checkbox" name="private" checked value="yes">
+                    <label class="radioLabel" for="slideThree"></label>
+                </div>
+
+
                 <input type="submit" name="submit" value="submit" tabindex="10">
             </fieldset>
         </form>

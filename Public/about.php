@@ -15,7 +15,7 @@ require_once '../private/includes/header.inc.php';
     </article>
     <article class="content">
         <?php
-        $display->read($basename, 'right');
+        $display->read($basename, "right", "DESC");
         $display->display();
         ?> 
     </article>
