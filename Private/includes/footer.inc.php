@@ -1,4 +1,4 @@
-<footer class="container footer-style">
+<footer class="footer-style">
     <p class="footer-name">&copy;<?php echo date("Y"); ?> <span>John R. Pepp</span></p>
 </footer>
 <script>
