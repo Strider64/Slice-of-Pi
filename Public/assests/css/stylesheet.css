@@ -1031,6 +1031,10 @@ section {
   #menu-icon {
     display: none; }
 
+  .heading {
+    background: url(../images/img-heading-01.png) no-repeat center;
+    background-color: #fff; }
+
   div.outerBlog {
     background-color: #F2F2F2;
     width: 100%;
