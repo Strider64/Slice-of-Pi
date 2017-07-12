@@ -32,7 +32,7 @@ class Display extends Read {
             echo "<p>" . htmlspecialchars($this->row->content) . "</p>\n";
             if (isset($_SESSION['user']) && ($_SESSION['user']->security_level === 'sysop' ||  $_SESSION['user']->id === $this->row->user_id)) {
                 echo '<div id="system">' . "\n";
-                echo '<a id="edit" href="edit_page.php?id=' . urlencode($this->row->id) . '">Edit</a>' . "\n";
+                echo '<a id="edit" href="edit/' . urlencode($this->row->id) . '">Edit</a>' . "\n";
                 echo '<a id="delete" href="delete_page.php?id=' . urlencode($this->row->id) . '">Delete</a>' . "\n";
                 echo "</div>\n";
             }
