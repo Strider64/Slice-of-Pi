@@ -1,0 +1,8 @@
+RewriteEngine On
+#Comment out the bottom for remote server (maybe)
+#RewriteBase /
+Options +FollowSymLinks -MultiViews
+RewriteRule ^(index|about|blog|contact|edit)$ $1.php [NC,L]
+
+
+RewriteRule ^edit/(\d+)$ edit.php?id=$1 [NC,L]
