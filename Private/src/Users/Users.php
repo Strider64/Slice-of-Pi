@@ -41,7 +41,7 @@ class Users {
             try {
 
                 /* Set the query variable */
-                $this->query = 'INSERT INTO users (username, password, full_name, email, confirmation_code, security_level, date_added) VALUES (:username, :password, :full_name, :email,  :confirmation_code, :security_level, NOW())';
+                $this->query = 'INSERT INTO users (username, password, full_name, email, confirmation_code, security_level, private, date_added) VALUES (:username, :password, :full_name, :email,  :confirmation_code, :security_level, :private, NOW())';
 
                 /* Prepare the query */
                 $this->stmt = $pdo->prepare($this->query);
@@ -53,7 +53,8 @@ class Users {
                     ':full_name' => $data['full_name'],
                     ':email' => $data['email'],
                     ':confirmation_code' => $data['confirmation_code'],
-                    ':security_level' => $data['security_level']
+                    ':security_level' => $data['security_level'],
+                    ':private' => $data['private']
                 ]); // End of execution:
                 return \TRUE;
             } catch (PDOException $error) {
@@ -72,7 +73,7 @@ class Users {
         $db = DB::getInstance();
         $pdo = $db->getConnection();
         /* Setup the Query for reading in login data from database table */
-        $this->query = 'SELECT id, username, password, full_name, security_level, email FROM users WHERE username=:username';
+        $this->query = 'SELECT id, username, password, full_name, email, security_level, private  FROM users WHERE username=:username';
 
 
         $this->stmt = $pdo->prepare($this->query); // Prepare the query:
@@ -90,8 +91,9 @@ class Users {
             $this->userArray['id'] = $this->user->id;
             $this->userArray['username'] = $this->user->username;
             $this->userArray['full_name'] = $this->user->full_name;
+            $this->userArray['email'] = $this->user->email;            
             $this->userArray['security_level'] = $this->user->security_level;
-            $this->userArray['email'] = $this->user->email;
+            $this->userArray['private'] = $this->user->private;
             $_SESSION['user'] = (object) $this->userArray;
             return \TRUE;
         } else {
