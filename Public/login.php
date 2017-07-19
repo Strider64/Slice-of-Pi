@@ -26,7 +26,7 @@ if (isset($submit) && $submit === 'login') {
     }
 }
 
-if (isset($submit) && $submit === 'register') {
+if (isset($submit) && $submit === 'register') { 
 
     $data['username'] = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $data['password'] = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS);

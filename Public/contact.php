@@ -25,7 +25,7 @@ if (isset($submit) && $submit === 'submit') {
         $data['reason'] = filter_input(INPUT_POST, 'reason', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $data['comments'] = filter_input(INPUT_POST, 'comments', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-        $send = new Email($data, $transport);
+        $send = new Email($data);
     } else {
         $success = "You're not a human!";
     }
