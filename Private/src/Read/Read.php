@@ -11,13 +11,23 @@ abstract class Read {
     protected $stmt = \NULL;
     protected $data = [];
 
-    public function read($page_name, $column_pos, $sort_by = "ASC") {
+    public function getUserIds() {
+        $db = DB::getInstance();
+        $pdo = $db->getConnection();
+        $this->query = 'SELECT id, username, full_name, private FROM users';
+        $this->stmt = $pdo->prepare($this->query);
+        $this->stmt->execute();
+        $this->data = $this->stmt->fetchAll(PDO::FETCH_OBJ);
+        return $this->data;        
+    }
+
+    public function read($page_name, $column_pos, $sort_by = "ASC", $user_id = 65) {
         $db = DB::getInstance();
         $pdo = $db->getConnection();
         if ($sort_by === "DESC") {
-            $this->query = 'SELECT id, user_id, author, page_name, column_pos, image_path, heading, content, DATE_FORMAT(date_added, "%W, %M %e, %Y") as date_added, date_added as myDate FROM cms WHERE page_name=:page_name and column_pos=:column_pos ORDER BY myDate DESC';
+            $this->query = 'SELECT id, user_id, author, page_name, column_pos, image_path, heading, content, DATE_FORMAT(date_added, "%W, %M %e, %Y") as date_added, date_added as myDate FROM cms WHERE page_name=:page_name AND column_pos=:column_pos ORDER BY myDate DESC, user_id ASC';
         } else {
-            $this->query = 'SELECT id, user_id, author, page_name, column_pos, image_path, heading, content, DATE_FORMAT(date_added, "%W, %M %e, %Y") as date_added, date_added as myDate FROM cms WHERE page_name=:page_name and column_pos=:column_pos ORDER BY myDate ASC';
+            $this->query = 'SELECT id, user_id, author, page_name, column_pos, image_path, heading, content, DATE_FORMAT(date_added, "%W, %M %e, %Y") as date_added, date_added as myDate FROM cms WHERE page_name=:page_name AND column_pos=:column_pos ORDER BY user_id ASC, myDate DESC';
         }
 
 
