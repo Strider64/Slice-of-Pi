@@ -40,7 +40,7 @@ class Display extends Read {
         }
     }
 
-    public function read($page_name, $column_pos, $sort_by = "ASC") {
+    public function read($page_name, $column_pos, $sort_by = "ASC", $user_id=65) {
         $this->data = parent::Read($page_name, $column_pos, $sort_by);
     }
 
