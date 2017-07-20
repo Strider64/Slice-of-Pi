@@ -1,2 +1,2 @@
 You will should downlod your own composer https://getcomposer.org/ and switfmailer https://swiftmailer.symfony.com/ applications.
-However, I'm providing them here for those who want to copy mywebsite project exactly. 
+However, I'm providing only composer if you want copy the my file structure exactly and you'll have to get swiftmailer on your own. Though I highly highy recommend you get both composer and swiftmailer on your own, for you will be able to customize it for your own project(s). Besides it is relatively simple installing both. 
