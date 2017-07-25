@@ -31,6 +31,7 @@ class Calendar extends Location {
     protected $nextMonth = \NULL;
     public $selectedMonth = \NULL;
     public $n = \NULL;
+    public $result = \NULL;
     protected $calendar = \NULL; // The HTML Calender:
     protected $alphaDay = [0 => "Sun", 1 => "Mon", 2 => "Tue", 3 => "Wed", 4 => "Thu", 5 => "Fri", 6 => "Sat"];
     protected $imporantDates = [];
@@ -73,37 +74,49 @@ class Calendar extends Location {
         return $this->isHoliday->checkForHoliday($this->selectedMonth->format('Y-m-j'));
     }
 
-    protected function checkForEntry() {
-
+    protected function checkForEntry($calDate) {
+        $blog = "blog.php";
         $db = Database::getInstance();
         $pdo = $db->getConnection();
         $this->username = isset($_SESSION['user']) ? $_SESSION['user']->username : \NULL;
-        if (!$this->username) {
-            return \NULL;
-        }
-        $this->query = 'SELECT 1 FROM calendar WHERE date=:date AND created_by=:created_by';
+
+        $this->query = 'SELECT 1 FROM cms WHERE page_name=:page_name AND DATE_FORMAT(date_added, "%Y-%m-%d")=:date_added';
 
         $this->stmt = $pdo->prepare($this->query);
 
-        $this->stmt->execute([':date' => $this->urlDate, ':created_by' => $this->username]);
+        $this->stmt->execute([':page_name' => $blog ,':date_added' => $calDate]);
 
         $this->result = $this->stmt->fetch();
 
         /* If result is true there is data in day, otherwise no data */
         if ($this->result) {
-            return "memo";
+            return \TRUE;
         } else {
-            return \NULL;
+            return \FALSE;
         }
     }
 
     /* Highlight Today's Date on Calendar */
 
     protected function currentDays() {
+        $this->result = $this->checkForEntry($this->current->format("Y-m-d"));
         if ($this->now->format("F j, Y") === $this->current->format("F j, Y")) {
-            $this->calendar .= "\t\t" . '<td class="background"><a class="foreground" href="daily.php?date=' . $this->current->format('Y-m-j') . '">' . $this->current->format("j") . '</a></td>' . "\n";
+            $this->calendar .= "\t\t" . '<td class="background">';
+            if ($this->result) {
+                $this->calendar .= '<a class="foreground golden" href="daily/' . $this->current->format('Y-m-j') . '">' . $this->current->format("j") . '</a>';
+            } else {
+                $this->calendar .= '<a class="foreground inactiveLink" href="daily/' . $this->current->format('Y-m-j') . '">' . $this->current->format("j") . '</a>';
+            }
+            
+            $this->calendar .= "</td>\n";
         } else {
-            $this->calendar .= "\t\t" . '<td><a class="current" href="daily.php?date=' . $this->current->format('Y-m-j') . '">' . $this->current->format("j") . '</a></td>' . "\n";
+            $this->calendar .= "\t\t" . '<td>';
+            if ($this->result) {
+                $this->calendar .= '<a class="current" href="daily/' . $this->current->format('Y-m-j') . '">' . $this->current->format("j") . '</a>';
+            } else {
+                $this->calendar .= '<a class="current inactiveLink" href="daily/' . $this->current->format('Y-m-j') . '">' . $this->current->format("j") . '</a>';
+            }           
+            $this->calendar .= "</td>\n";
         }
     }
 
@@ -136,9 +149,9 @@ class Calendar extends Location {
         /* Create heading for the calendar */
         $this->calendar .= "\t<tr>\n";
         $this->calendar .= "\t\t" . '<th class="tableHeading" colspan="7">';
-        $this->calendar .= '<a data-pos="prev" class="prev-left" href="' . $this->fileLocation() . '?location=' . $this->prev . '">Prev</a>';
+        $this->calendar .= '<a data-pos="prev" class="prev-left" href="' . $this->fileLocation() . $this->prev . '">Prev</a>';
         $this->calendar .= $this->current->format('F Y');
-        $this->calendar .= '<a data-pos="next" class="next-right" href="' . $this->fileLocation() . '?location=' . $this->next . '">Next</a>';
+        $this->calendar .= '<a data-pos="next" class="next-right" href="' . $this->fileLocation()  . $this->next . '">Next</a>';
         $this->calendar .= "</th>\n";
         $this->calendar .= "\t</tr>\n";
     }
@@ -146,7 +159,7 @@ class Calendar extends Location {
     protected function display() {
         $this->days = $this->current->format('t'); // Number of days in the month:
         /* Create the table */
-        $this->calendar .= '<table>' . "\n";
+        $this->calendar .= '<table class="calendar">' . "\n";
         $this->heading();
         /* Create days of the week heading (columns) */
         $this->calendar .= "\t<tr>\n";

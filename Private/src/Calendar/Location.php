@@ -31,7 +31,7 @@ abstract class Location {
         $this->php_self = filter_input(INPUT_SERVER, 'PHP_SELF', FILTER_SANITIZE_URL);
         $this->path_parts = pathinfo($this->php_self);
         $this->basename = $this->path_parts['basename'];
-        return $this->basename;
+        return $this->path_parts['filename'] . "/";
     }
 
 }
