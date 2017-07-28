@@ -24,7 +24,7 @@ abstract class Read {
     public function dailyRead($blogDate) {
         $db = DB::getInstance();
         $pdo = $db->getConnection();
-        $this->query = 'SELECT id, user_id, author, page_name, column_pos, image_path, heading, content, DATE_FORMAT(date_added, "%W, %M %e, %Y") as date_added, date_added as myDate FROM cms WHERE DATE_FORMAT(date_added, "%Y-%m-%e")=:date_added ORDER BY author  ASC';
+        $this->query = 'SELECT id, user_id, author, page_name, column_pos, image_path, heading, content, DATE_FORMAT(date_added, "%W, %M %d, %Y") as date_added, date_added as myDate FROM cms WHERE DATE_FORMAT(date_added, "%Y-%m-%d")=:date_added ORDER BY author  ASC';
         $this->stmt = $pdo->prepare($this->query); // Prepare the query:
         $this->stmt->execute([':date_added' => $blogDate]); // Execute the query with the supplied user's parameter(s):
         $this->data = $this->stmt->fetchAll(PDO::FETCH_OBJ);
