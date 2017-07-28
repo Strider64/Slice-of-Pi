@@ -103,18 +103,18 @@ class Calendar extends Location {
         if ($this->now->format("F j, Y") === $this->current->format("F j, Y")) {
             $this->calendar .= "\t\t" . '<td class="background">';
             if ($this->result) {
-                $this->calendar .= '<a class="foreground golden" href="daily/' . $this->current->format('Y-m-j') . '">' . $this->current->format("j") . '</a>';
+                $this->calendar .= '<a class="foreground golden" href="daily/' . $this->current->format('Y-m-d') . '">' . $this->current->format("j") . '</a>';
             } else {
-                $this->calendar .= '<a class="foreground inactiveLink" href="daily/' . $this->current->format('Y-m-j') . '">' . $this->current->format("j") . '</a>';
+                $this->calendar .= '<a class="foreground inactiveLink" href="daily/' . $this->current->format('Y-m-d') . '">' . $this->current->format("j") . '</a>';
             }
             
             $this->calendar .= "</td>\n";
         } else {
             $this->calendar .= "\t\t" . '<td>';
             if ($this->result) {
-                $this->calendar .= '<a class="current" href="daily/' . $this->current->format('Y-m-j') . '">' . $this->current->format("j") . '</a>';
+                $this->calendar .= '<a class="current" href="daily/' . $this->current->format('Y-m-d') . '">' . $this->current->format("j") . '</a>';
             } else {
-                $this->calendar .= '<a class="current inactiveLink" href="daily/' . $this->current->format('Y-m-j') . '">' . $this->current->format("j") . '</a>';
+                $this->calendar .= '<a class="current inactiveLink" href="daily/' . $this->current->format('Y-m-d') . '">' . $this->current->format("j") . '</a>';
             }           
             $this->calendar .= "</td>\n";
         }
