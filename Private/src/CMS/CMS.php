@@ -25,7 +25,7 @@ class CMS {
         $pdo = $db->getConnection();
         $this->query = 'INSERT INTO cms( user_id, author, page_name, column_pos, image_path, heading, content, date_updated, date_added) VALUES ( :user_id, :author, :page_name, :column_pos, :image_path, :heading, :content, NOW(), NOW())';
         $this->stmt = $pdo->prepare($this->query);
-        $this->result = $this->stmt->execute([':user_id' => $data['user_id'], 'author' => $data['author'], ':page_name' => $data['page_name'], ':column_pos' => $data['column_pos'], ':image_path' => $data['image_path'], ':heading' => $data['heading'], ':content' => $data['content']]);
+        $this->result = $this->stmt->execute([':user_id' => $data['user_id'], 'author' => $data['author'], ':page_name' => $data['page_name'], ':column_pos' => $data['column_pos'], ':image_path' => $data['image_path'], ':heading' => $data['heading'], ':content' => trim($data['content'])]);
         return $data['page_name'];
     }
 
