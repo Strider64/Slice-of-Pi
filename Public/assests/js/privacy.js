@@ -11,3 +11,4 @@ if (typeof (yesCheck) != 'undefined' && yesCheck != null)
         document.getElementById('imgBtn').style.display = "none";
     });
 }
+
