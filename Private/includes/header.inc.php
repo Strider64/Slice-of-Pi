@@ -7,7 +7,7 @@
         } else {
             echo '<base href="https://www.pepster.com/">';
         }
-        
+
         $title = ['Index' => 'A Slice of Technology - Learning from Technology', 'About' => 'About John Pepp - Owner - Slice of Tecnology', 'Blog' => 'Online Blog Everyone', 'Calendar' => 'Calendar - Blog', 'Contact' => 'Contact - John Pepp', 'Login' => 'Login - Registration - a Slice of Technogy', 'Members_page' => 'Member Only Page', 'Daily' => "Daily Blog"];
         ?>
 
@@ -22,31 +22,55 @@
     </head>
 
     <body>
+        <header class="container header-banner">
+            <h2 class="logo"><span>A Slice of Technology</span> <a href="index"></a></h2>
+            <h1 class="website-name">A Slice of Technology</h1>
+            <?php
+                if (!is_logged_in()) {
+                    echo '<div class="login-logout">' . "\n";
+                    echo '<a href="login">login</a>' . "\n";
+                    echo "</div>\n";
+                } else {
+                    echo '<div class="login-logout">' . "\n";
+                    echo '<span>Welcome, ' . $_SESSION['user']->username . '! <a href="logout.php">logout</a></span>' . "\n";
+                    echo "</div>\n";                    
+                }
+            ?>
+        </header>
+        <div class="container">
+            <div class="mobileNav">
+                <nav id="slider" class="slider"> <span class="slider-tab">&Congruent;</span>
+                    <ul class="slider-margin">
+                        <li><a href="index">home</a></li>
+                        <li><a href="about">about</a></li>                        
+                        <li><a href="calendar"><span>calendar</span></a>
+                        <li><a href="blog">blog</a></li>
+                        <li><a href="members_page.php">login / members</a></li>
+                        <li><a href="contact">contact</a></li>
+                    </ul>
+                </nav>
+                <!-- END OF NAVIGATIONAL LINKS-->
+                <div id="mobile-header">
+                    <p class="header-style">A Spice of Technology</p>
+                </div>
+                <!-- END OF MOBILE HEADER --> 
+            </div>
 
-        <div class="heading">            
-            <a href="#" id="logo"></a>            
-            <nav>
-                <a href="#" id="menu-icon"></a>
-                <ul>
-                    <li><a href="index" <?php echo ($basename === 'index.php') ? 'class="current"' : NULL; ?>>Home</a></li>
-                    <li><a href="about" <?php echo ($basename === 'about.php') ? 'class="current"' : NULL; ?>>About</a></li>                    
-                    <li><a href="blog" <?php echo ($basename === 'blog.php') ? 'class="current"' : NULL; ?>>Blog</a></li>
-                    <li><a href="calendar" <?php echo ($basename === 'calendar.php') ? 'class="current"' : NULL; ?>>Calendar</a></li>
-                    <li><a href="contact" <?php echo ($basename === 'contact.php') ? 'class="current"' : NULL; ?>>Contact</a></li>
-                    <?php
-                    if (!is_logged_in()) {
-                        echo ($basename === 'blog.php' || $basename === 'calendar.php') ? '<li><a href="login.php">Login</a></li>' : '<li><a class="notVisible" href="login.php">Login</a></li>';
-                    }
-                    ?>
-                    <?php if (is_logged_in()) { ?>
-                        <li><a href="members_page.php" <?php echo ($basename === 'members_page.php') ? 'class="current"' : NULL; ?>>Members</a></li>
-                    <?php } else { ?>
-                        <li><a class="notVisible" href="#">Members</a></li>
-                        <?php } ?>
-
-
-                    <?php echo ( is_logged_in() ) ? '<li><a href="logout.php">Logout</a></li>' : \NULL; ?>
-
-                </ul>
-            </nav>
+            <div id="sticky" class="row navigational-wrapper">
+                <nav class="slider"> <span class="slider-tab">&Congruent;</span>
+                    <ul class="slider-margin">
+                        <li><a href="index">home</a></li>
+                        <li><a href="about">about</a></li>                        
+                        <li class="menu-trigger"><a class="mobile-menu" href="calendar"><span>calendar</span></a>
+                            <ul class="drop">
+                                <li><a href="blog" class="current">blog</a></li>
+                                <li><a href="members_page.php">members</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="contact">contact</a></li>
+                    </ul>
+                </nav>
+                <!-- END OF NAVIGATIONAL LINKS-->
+            </div>
         </div>
+
