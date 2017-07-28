@@ -20,7 +20,9 @@ require_once '../private/includes/header.inc.php';
             'jpeg',
             'png'
         ];
-        $files = glob("assets/uploads/*.*");
+        $temp = glob("assets/uploads/*.*");
+        $files = array_reverse($temp);
+        
         echo '<ul id="slides">' . "\n";
         for ($i = 0; $i < count($files); $i++) {
             $image = $files[$i]; // Just making it easier to understand that $files[$i] are the individual image in the loop:

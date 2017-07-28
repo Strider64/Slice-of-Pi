@@ -4,14 +4,22 @@ require_once '../private/initialize.php';
 use Library\Calendar\Calendar;
 use Library\Display\Display;
 
+
+
 $blogDate = filter_input(INPUT_GET, 'date', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
 $calendar = new Calendar();
+$date_is_valid = $calendar->checkIsAValidDate($blogDate);
+
 $calendar->phpDate();
 
 $display = new Display();
+
 if (isset($blogDate)) {
-    $data = $display->dailyRead($blogDate);
+    
+    if ($date_is_valid) {
+        $data = $display->dailyRead($blogDate);
+    }
 }
 require_once '../private/includes/header.inc.php';
 ?>
@@ -27,9 +35,9 @@ require_once '../private/includes/header.inc.php';
     </div>
 
     <?php
-    if (isset($data)) {
+    if (isset($data) && ($date_is_valid && strlen($blogDate) === 10)) {
         $display->setData($data);
-        echo '<article class="blogContent">' . "\n";
+        echo '<article class="blogContent marginUp">' . "\n";
         $display->display();
         echo "</article>\n";
     }
