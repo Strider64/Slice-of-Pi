@@ -25,17 +25,14 @@
         <header class="container header-banner">
             <h2 class="logo"><span>A Slice of Technology</span> <a href="index"></a></h2>
             <h1 class="website-name">A Slice of Technology</h1>
-            <?php
-                if (!is_logged_in()) {
-                    echo '<div class="login-logout">' . "\n";
-                    echo '<a href="login">login</a>' . "\n";
-                    echo "</div>\n";
-                } else {
-                    echo '<div class="login-logout">' . "\n";
-                    echo '<span>Welcome, ' . $_SESSION['user']->username . '! <a href="logout.php">logout</a></span>' . "\n";
-                    echo "</div>\n";                    
-                }
-            ?>
+            <div class="socialMediaStyle">
+                <ul class="socialIcons">
+                    <li><a href="http://www.facebook.com/PepstersPlace" target="_blank"><img src="assets/images/img-facebook-logo-25x25.png" alt="A Slice of Technology FB Page" ></a></li>
+                    <li><a href="http://twitter.com/#!/Strider64" target="_blank"><img src="assets/images/img-twitter-logo-25x25.png" alt="Pepster's Twitter Profile" ></a></li>
+                    <li><a href="http://www.linkedin.com/in/johnpepp" target="_blank"><img src="assets/images/img-linkedin-logo-25x25.png" alt="John Pepp's LinkedIn Profile" ></a></li>
+                    <li><a href="http://www.flickr.com/people/pepster/" target="_blank"><img src="assets/images/img-flickr-logo-100x25.png" alt="John Pepp's Flickr Profile" ></a></li>
+                </ul>
+            </div>
         </header>
         <div class="container">
             <div class="mobileNav">
@@ -69,8 +66,18 @@
                         </li>
                         <li><a href="contact">contact</a></li>
                     </ul>
+                    <?php
+                    echo (!is_logged_in()) ? '<a class="login" href="login">login</a>' . "\n" : NULL;
+
+                    if (is_logged_in()) {
+                        echo '<div class="logout">' . "\n";
+                        echo '<span>Welcome, ' . $_SESSION['user']->username . '! <a href="logout.php">logout</a></span>' . "\n";
+                        echo "</div>\n";
+                    }
+                    ?>
                 </nav>
                 <!-- END OF NAVIGATIONAL LINKS-->
+
             </div>
         </div>
 
