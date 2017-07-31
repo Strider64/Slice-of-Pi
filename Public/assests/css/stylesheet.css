@@ -2154,29 +2154,7 @@ section {
     width: 100%;
     max-width: 1000px;
     height: 100px;
-    background-color: #fff; }
-    .header-banner .login-logout {
-      float: right;
-      margin: 30px 20px; }
-      .header-banner .login-logout span {
-        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-        font-size: 1.2em;
-        color: #000; }
-      .header-banner .login-logout a {
-        -moz-border-radius: 10px;
-        -webkit-border-radius: 10px;
-        border-radius: 10px;
-        -moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
-        -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
-        box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
-        background-color: #4484CE;
-        padding: 10px;
-        font-family: Arial, Helvetica, sans-serif;
-        color: #fff;
-        text-transform: capitalize;
-        text-decoration: none; }
-        .header-banner .login-logout a:hover {
-          background-color: green; }
+    background: url(../images/img-naturalwhite-01.png) repeat; }
 
   h1.website-name {
     position: absolute;
@@ -2184,6 +2162,19 @@ section {
     left: 140px;
     font-family: 'Bellefair', serif;
     font-size: 2.4em; }
+
+  div.socialMediaStyle {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 100%;
+    max-width: 210px;
+    padding: 10px 5px;
+    margin-top: 5px;
+    margin-right: 20px; }
+    div.socialMediaStyle ul li a {
+      float: left;
+      padding-left: 5px; }
 
   /* LOGO STYLING */
   h2.logo {
@@ -2219,11 +2210,62 @@ section {
 
   /* NAVIGATION STYLING */
   nav {
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7);
+    position: relative;
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.6);
     background-color: #336699;
     height: 40px;
     padding-left: 20px;
     margin: -1px 0 0 0; }
+    nav a.login {
+      -moz-border-radius: 8px;
+      -webkit-border-radius: 8px;
+      border-radius: 8px;
+      -moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
+      -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
+      box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
+      position: absolute;
+      top: 8px;
+      right: 20px;
+      display: block;
+      width: 80px;
+      height: 25px;
+      background-color: #2e2e2e;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 25px;
+      text-align: center;
+      color: #fff;
+      text-transform: capitalize;
+      text-decoration: none; }
+      nav a.login:hover {
+        background-color: green; }
+    nav .logout {
+      position: absolute;
+      top: 5px;
+      right: 20px; }
+      nav .logout span {
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+        font-size: 1.0em;
+        color: #fff; }
+      nav .logout a {
+        -moz-border-radius: 8px;
+        -webkit-border-radius: 8px;
+        border-radius: 8px;
+        -moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
+        -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
+        box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
+        display: inline-block;
+        width: 80px;
+        height: 25px;
+        background-color: #2e2e2e;
+        font-family: Arial, Helvetica, sans-serif;
+        line-height: 25px;
+        text-align: center;
+        color: #fff;
+        text-transform: capitalize;
+        text-decoration: none;
+        margin: 0 5px; }
+        nav .logout a:hover {
+          background-color: green; }
 
   nav li:first-child {
     border: none; }
@@ -2618,7 +2660,7 @@ section {
 
   footer.footer-style {
     border-top: 4px solid #4C9CF1;
-    background-color: #fff;
+    background: url(../images/img-naturalwhite-01.png) repeat;
     display: block;
     width: 100%;
     max-width: 1000px;
