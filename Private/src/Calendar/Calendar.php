@@ -57,7 +57,9 @@ class Calendar extends Location {
     public function checkIsAValidDate($myDateString) {
         return (bool) strtotime($myDateString);
     }
-
+    public function changeMonth($setDate, $size = 100) {
+        self::__construct($setDate, $size);
+    }
     public function phpDate($size = 100) {
         $setDate = filter_input(INPUT_GET, 'location', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $valid = $this->checkIsAValidDate($setDate);
