@@ -19,6 +19,7 @@ if (isset($blogDate)) {
     
     if ($date_is_valid) {
         $data = $display->dailyRead($blogDate);
+        $calendar->changeMonth($blogDate);
     }
 }
 require_once '../private/includes/header.inc.php';
