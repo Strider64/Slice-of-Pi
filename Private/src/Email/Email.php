@@ -40,7 +40,7 @@ class Email {
          * Email Address message is going to
          */
         $message->setTo([
-           'joesmith@example.com' => 'Joe Smith'// Example email address:
+           'jrpepp@pepster.com' => 'John Pepp'// jrpepp@pepster.com || John Pepp
         ]);
 
         $message->setSubject($subject); // Subject:
