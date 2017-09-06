@@ -34,15 +34,16 @@ class ProcessImage {
         $this->username = $username;
     }
 
+    protected function setImageExt() {
+        return pathinfo($this->file['name'], PATHINFO_EXTENSION);
+    }
+
     /*
      * Searches the contents of a file for a PHP embed tag
      * The problem with this check is that file_get_contents() reads 
      * the entire file into memory and then searches it (large, slow).
      * Using fopen/fread might have better performance on large files.
      */
-    protected function setImageExt() {
-        return pathinfo($this->file['name'], PATHINFO_EXTENSION);
-    }
 
     protected function file_contains_php() {
         $contents = file_get_contents($this->file['tmp_name']);
@@ -60,7 +61,6 @@ class ProcessImage {
             return $this->status; // Good Image
         }
     }
-
 
     public function checkFileType() {
         if (!in_array($this->file['type'], self::$allowedTypes)) {
@@ -90,6 +90,7 @@ class ProcessImage {
     /*
      * If image passes validation then name the file and move the image to assets/uploads
      */
+
     protected function uniqueName() {
         $this->myDate = new \DateTime("NOW", new \DateTimeZone("America/Detroit"));
         return $this->username . $this->myDate->format("U") . ".";
