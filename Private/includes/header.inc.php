@@ -8,7 +8,7 @@
             echo '<base href="https://www.pepster.com/">';
         }
 
-        $title = ['Index' => 'A Slice of Technology - Learning from Technology', 'About' => 'About John Pepp - Owner - Slice of Tecnology', 'Blog' => 'Online Blog Everyone', 'Calendar' => 'Calendar - Blog', 'Contact' => 'Contact - John Pepp', 'Login' => 'Login - Registration - a Slice of Technogy', 'Members_page' => 'Member Only Page', 'Daily' => "Daily Blog"];
+        $title = ['Index' => 'A Slice of Technology - Learning from Technology', 'About' => 'About John Pepp - Owner - Slice of Tecnology', 'Blog' => 'Online Blog Everyone', 'Calendar' => 'Calendar - Blog', 'Contact' => 'Contact - John Pepp', 'Edit' => 'Edit Page', 'Login' => 'Login - Registration - a Slice of Technogy', 'Members_page' => 'Member Only Page', 'Daily' => "Daily Blog"];
         ?>
 
         <meta charset="UTF-8">
@@ -42,8 +42,9 @@
                         <li><a href="about">about</a></li>                        
                         <li><a href="calendar"><span>calendar</span></a>
                         <li><a href="blog">blog</a></li>
-                        <li><a href="members_page.php">login / members</a></li>
+                        <li><a href="members_page.php"><?php echo(is_logged_in()) ? "Members" : "Login"; ?></a></li>
                         <li><a href="contact">contact</a></li>
+                        <?php echo (is_logged_in()) ? '<li><a href="logout.php">logout</a></li>' . "\n" : NULL; ?>
                     </ul>
                 </nav>
                 <!-- END OF NAVIGATIONAL LINKS-->
@@ -64,6 +65,7 @@
                                 <li><a href="members_page.php">members</a></li>
                             </ul>
                         </li>
+                        <li><a href="order">order</a></li>
                         <li><a href="contact">contact</a></li>
                     </ul>
                     <?php
