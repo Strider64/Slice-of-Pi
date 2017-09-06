@@ -18,6 +18,9 @@ if (filter_input(INPUT_SERVER, 'SERVER_NAME', FILTER_SANITIZE_URL) == "localhost
 // session.entropy_file = "/dev/urandom"
 
 session_start();
+if (empty($_SESSION['token'])) {
+    $_SESSION['token'] = bin2hex(random_bytes(32));
+}
 
 // Function to forcibly end the session
 function end_session() {
@@ -99,19 +102,7 @@ function confirm_session_is_valid() {
     }
 }
 
-function is_security_level_is_valid() {
-    
-    if (!is_logged_in()) {
-        return FALSE;
-    }
-    
-    if ($_SESSION['user']->security_level === "member" || $_SESSION['user']->security_level === "sysop") {
-        return TRUE;
-    } else {
-        return FALSE;
-    }
-    
-}
+
 
 function confirm_security_level_is_valid() {
     if (!is_security_level_is_valid()) {
@@ -124,6 +115,21 @@ function confirm_security_level_is_valid() {
 // Is user logged in already?
 function is_logged_in() {
     return (isset($_SESSION['logged_in']) && $_SESSION['logged_in']);
+}
+
+/* Check general security levels */
+function is_security_level_is_valid() {
+    
+    if (!is_logged_in()) {
+        return FALSE;
+    }
+    
+    if ($_SESSION['user']->security_level === "member" || $_SESSION['user']->security_level === "sysop") {
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+    
 }
 
 // If user is not logged in, end and redirect to login page.
