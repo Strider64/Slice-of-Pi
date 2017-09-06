@@ -17,16 +17,29 @@ $users = new Users();
 $submit = filter_input(INPUT_POST, 'action', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
 if (isset($submit) && $submit === 'login') {
-    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $username = trim(filter_input(INPUT_POST, 'username', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
     $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-    $result = $users->read($username, $password);
-    if ($result) {
-        after_successful_login();
+    if (preg_match('/^[ \w]+$/', $username) && (strlen($username) > 0)) {
+        $throttle_delay = throttle_failed_logins($username);
+        if ($throttle_delay > 0) {
+            $message = "Too many login attempts. ";
+            $message .= "You must wait " . $throttle_delay . " minutes before you can attempt another login.";
+        } else {
+            $result = $users->read($username, $password);
+            if ($result) {
+                clear_failed_logins($username);
+                after_successful_login();
+            } else {
+                record_failed_login($username);
+            }
+        } 
+    } else {
+        unset($username);
     }
 }
 
-if (isset($submit) && $submit === 'register') { 
+if (isset($submit) && $submit === 'register') {
 
     $data['username'] = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $data['password'] = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -36,9 +49,9 @@ if (isset($submit) && $submit === 'register') {
     $data['verify_email'] = filter_input(INPUT_POST, 'verify_email', FILTER_SANITIZE_EMAIL);
     $data['private'] = filter_input(INPUT_POST, 'private', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     if (empty($data['private'])) {
-        $data['private'] =  'no';
+        $data['private'] = 'no';
     }
-    
+
     $validate = new FormValidation($data);
 
     if ($validate->result) {
@@ -69,7 +82,7 @@ require_once '../private/includes/header.inc.php';
         <div id="login_section">
             <article>
                 <h1>Login Section</h1>
-                <p>This is where you login in to gain access to member only pages. This website is using a new and improved PHP login system that improves security of users personal information.</p>
+                <p><?php echo (isset($message)) ? $message : 'This is where you login in to gain access to member only pages. This website is using a new and improved PHP login system that improves security of users personal information.'; ?></p>
             </article>
             <form id="login" action="<?php $basename; ?>" method="post" autocomplete="off">
                 <fieldset>

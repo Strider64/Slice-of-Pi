@@ -31,7 +31,7 @@ $data['content'] = filter_input(INPUT_POST, 'content', FILTER_DEFAULT);
 
 $image_check = filter_input(INPUT_POST, 'insert_image', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-if ($image_check === "yes" && $_FILES['file']['error'] !== 4) {
+if (isset($image_check) && $image_check === "yes" && $_FILES['file']['error'] !== 4) {
 
     $file = $_FILES['file']; // Assign image data to $file array:
     //echo "<pre>" . print_r($file, 1) . "</pre>\n";
@@ -74,6 +74,13 @@ if ($image_check === "yes" && $_FILES['file']['error'] !== 4) {
             exit();
         }
     }
+} elseif (isset($image_check)) {
+    $data['image_path'] = \NULL;
+    $result = $cms->create($data);
+    if ($result) {
+        header("Location: " . $result);
+        exit();
+    }
 }
 
 
@@ -84,7 +91,6 @@ require_once '../private/includes/header.inc.php';
     <div id="left_section" class="span6">
         <form id="dataEntry" action="members_page.php" method="post" enctype="multipart/form-data">
             <fieldset>
-
 
                 <?php
                 if ($_SESSION['user']->security_level === 'sysop') {
@@ -105,17 +111,18 @@ require_once '../private/includes/header.inc.php';
                     <div class="maxl">
                         <label class="radio inline"> 
                             <input type="radio" name="column_pos" value="left" checked>
-                            <span>Left Column</span> 
+                            <span>Left</span> 
                         </label>
-
+                        <label class="radio inline"> 
+                            <input type="radio" name="column_pos" value="middle">
+                            <span>Middle</span> 
+                        </label>
                         <label class="radio inline"> 
                             <input type="radio" name="column_pos" value="right">
-                            <span>Right Column</span> 
+                            <span>Right</span> 
                         </label>
                     </div>
                 <?php } ?>
-
-
 
                 <div class="maxl">
                     <label class="radio inline">
