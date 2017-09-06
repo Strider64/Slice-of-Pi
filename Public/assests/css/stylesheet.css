@@ -187,7 +187,7 @@ TYPOGRAPHY CSS STYLING
 ********************************************/
 h1 {
   font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-  font-size: 1.4em;
+  font-size: 1.8em;
   line-height: 1.5; }
 
 h2 {
@@ -197,7 +197,8 @@ h2 {
   font-weight: bold; }
 
 p, td {
-  font-family: Arial, Helvetica, sans-serif; }
+  font-family: Arial, Helvetica, sans-serif;
+  white-space: pre-line; }
 
 a.links {
   font-family: Arial, Helvetica, sans-serif;
@@ -257,47 +258,60 @@ span {
 #right_column {
   border-left: 5px solid #EDEAD9; }
 
+.storePage {
+  display: block;
+  width: 100%;
+  max-width: 1000px;
+  height: auto;
+  background: url(../images/img-naturalwhite-01.png) repeat;
+  padding: 20px;
+  margin: 0 auto; }
+  .storePage .store {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    background-color: #fff;
+    padding: 10px; }
+    .storePage .store figure img {
+      width: 100%;
+      max-width: 640px;
+      height: auto; }
+    .storePage .store figure figcaption {
+      font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+      font-size: 1.4em;
+      line-height: 1.5;
+      text-align: center; }
+
 .mainPage {
   background: url(../images/img-naturalwhite-01.png) repeat;
-  height: 380px;
+  height: 100%;
+  min-height: 380px;
   padding: 10px;
-  margin: 0 auto; }
-
-div#carousel {
-  height: 360px;
-  background-color: #F2F2F2;
-  border-right: 4px double #4C9CF1;
-  padding: 20px; }
-  div#carousel #slides {
-    position: relative;
-    width: 100%;
-    height: auto;
-    padding: 0;
-    margin: 0; }
-    div#carousel #slides .slide {
-      position: absolute;
-      top: 0;
-      left: 0;
+  margin: 10px auto; }
+  .mainPage div#carousel {
+    height: 360px;
+    padding: 20px; }
+    .mainPage div#carousel #slides {
+      position: relative;
       width: 100%;
-      height: 100%;
-      opacity: 0;
-      z-index: 1;
-      -webkit-transition: opacity 1s;
-      -moz-transition: opacity 1s;
-      -o-transition: opacity 1s;
-      transition: opacity 1s; }
-    div#carousel #slides .showing {
-      opacity: 1;
-      z-index: 2; }
-
-#info {
-  background-color: #fff;
-  height: 360px;
-  padding: 20px; }
-  #info p {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.0em;
-    line-height: 1.5; }
+      height: auto;
+      padding: 0;
+      margin: 0; }
+      .mainPage div#carousel #slides .slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        z-index: 1;
+        -webkit-transition: opacity 1s;
+        -moz-transition: opacity 1s;
+        -o-transition: opacity 1s;
+        transition: opacity 1s; }
+      .mainPage div#carousel #slides .showing {
+        opacity: 1;
+        z-index: 2; }
 
 form#dataEntry {
   background-color: #f2f2f2;
@@ -596,12 +610,12 @@ article.blogContent {
   background-color: #fff;
   padding: 20px;
   margin: 15px auto; }
-  article.blogContent h1 {
+  article.blogContent h2 {
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
     font-size: 2.4em;
     line-height: 1.5;
     color: #0D73B8; }
-  article.blogContent h2.subheading {
+  article.blogContent h3.subheading {
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
     color: #0D73B8;
     font-size: 0.8em;
@@ -663,6 +677,139 @@ section {
   position: relative;
   padding: 20px; }
 
+/* PC STYLING */
+@media only screen and (min-width: 1000px) {
+  div#contact-form {
+    display: block;
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+    background-color: #fff;
+    padding: 30px;
+    margin: 0 auto; }
+    div#contact-form form#contact {
+      -moz-border-radius: 20px;
+      -webkit-border-radius: 20px;
+      border-radius: 20px;
+      -moz-box-shadow: 2px 2px 3px rgba(46, 46, 46, 0.4);
+      -webkit-box-shadow: 2px 2px 3px rgba(46, 46, 46, 0.4);
+      box-shadow: 2px 2px 3px rgba(46, 46, 46, 0.4);
+      width: 100%;
+      max-width: 650px;
+      height: auto;
+      background: url(../images/img-naturalwhite-01.png) repeat;
+      padding: 30px;
+      margin: 0 auto; }
+      div#contact-form form#contact fieldset {
+        -moz-border-radius: 8px;
+        -webkit-border-radius: 8px;
+        border-radius: 8px;
+        border: 2px solid #336699;
+        padding: 30px 20px; }
+      div#contact-form form#contact legend {
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+        font-size: 2.4em;
+        color: #336699;
+        padding: 0 5px; }
+      div#contact-form form#contact label {
+        float: left;
+        display: block;
+        width: 100%;
+        max-width: 140px;
+        height: 30px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1.0em;
+        line-height: 30px;
+        color: #336699;
+        text-align: left;
+        padding: 0; }
+      div#contact-form form#contact input {
+        clear: right;
+        display: block;
+        width: 100%;
+        max-width: 280px;
+        height: 30px;
+        border: none;
+        outline: none;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1.0em;
+        color: #336699;
+        padding: 0 5px;
+        margin-bottom: 10px; }
+      div#contact-form form#contact div.radioBlock {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        margin: 0 auto; }
+        div#contact-form form#contact div.radioBlock input[type=radio] {
+          display: none;
+          margin: 10px; }
+        div#contact-form form#contact div.radioBlock input[type=radio] + label.radioStyle {
+          display: inline-block;
+          width: 33.33333333333%;
+          height: 45px;
+          margin: -2px;
+          text-align: center;
+          text-transform: capitalize;
+          cursor: pointer;
+          color: #fff;
+          background-color: #4484CE;
+          border: 2px solid #2e2e2e;
+          font-family: Arial, Helvetica, sans-serif;
+          font-size: 1.0em;
+          line-height: 43px;
+          margin: 10px auto 0 auto; }
+        div#contact-form form#contact div.radioBlock input[type=radio] + label.radioStyle:hover {
+          color: #ffa;
+          background-color: #336699; }
+        div#contact-form form#contact div.radioBlock input[type=radio]:checked + label.radioStyle {
+          background-image: none;
+          color: #fff;
+          background-color: #336699; }
+      div#contact-form form#contact label.textBox {
+        clear: both;
+        text-align: left;
+        font-size: 1.2em;
+        padding: 0;
+        margin-top: 20px; }
+      div#contact-form form#contact textArea#comments {
+        resize: none;
+        border: none;
+        outline: none;
+        clear: both;
+        display: block;
+        width: 100%;
+        max-width: 600px;
+        height: 300px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1.0em;
+        line-height: 1.5;
+        color: #336699;
+        padding: 10px; }
+      div#contact-form form#contact .g-recaptcha {
+        margin-top: 20px; }
+      div#contact-form form#contact input[type=submit] {
+        -moz-border-radius: 8px;
+        -webkit-border-radius: 8px;
+        border-radius: 8px;
+        -moz-box-shadow: 2px 2px 3px rgba(46, 46, 46, 0.4);
+        -webkit-box-shadow: 2px 2px 3px rgba(46, 46, 46, 0.4);
+        box-shadow: 2px 2px 3px rgba(46, 46, 46, 0.4);
+        outline: none;
+        border: none;
+        float: right;
+        display: block;
+        width: 100%;
+        max-width: 120px;
+        height: 40px;
+        cursor: pointer;
+        background-color: #4484CE;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1.0em;
+        color: #fff;
+        text-transform: capitalize;
+        margin-top: 20px; } }
 /* SMARTPHONE STYLING */
 @media only screen and (max-width: 480px) {
   [class^="span"] {
@@ -765,40 +912,16 @@ section {
   .mainPage {
     overflow: hidden;
     background: url(../images/img-naturalwhite-01.png) repeat;
-    height: 750px;
     padding: 0;
     margin: 60px 0 0 0; }
-
-  div#carousel {
-    height: 270px;
-    background-color: #F2F2F2;
-    border-right: none;
-    padding: 0; }
-    div#carousel #slides {
-      position: relative;
-      width: 100%;
-      height: auto;
-      padding: 0;
-      margin: 0; }
-      div#carousel #slides .slide {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        opacity: 0;
-        z-index: 1;
-        -webkit-transition: opacity 1s;
-        -moz-transition: opacity 1s;
-        -o-transition: opacity 1s;
-        transition: opacity 1s; }
-      div#carousel #slides .showing {
-        opacity: 1;
-        z-index: 2; }
+    .mainPage div#carousel {
+      height: 270px;
+      background-color: #F2F2F2;
+      border-right: none;
+      padding: 0; }
 
   #info {
     background-color: #fff;
-    height: 480px;
     padding: 20px; }
     #info p {
       font-family: Arial, Helvetica, sans-serif;
@@ -809,8 +932,7 @@ section {
     display: block;
     width: 100%;
     max-width: 480px;
-    background-color: #fff;
-    margin: 60px 0 0 0; }
+    background-color: #fff; }
 
   div.loginPage {
     display: block;
@@ -963,12 +1085,12 @@ section {
     background-color: #fff;
     padding: 10px;
     margin: 0; }
-    article.blogContent h1 {
+    article.blogContent h2 {
       font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
       font-size: 1.8em;
       line-height: 1.5;
       color: #0D73B8; }
-    article.blogContent h2.subheading {
+    article.blogContent h3.subheading {
       font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
       color: #0D73B8;
       font-size: 0.8em;
@@ -1133,10 +1255,10 @@ section {
   article.content {
     width: 100%;
     padding: 12px; }
-    article.content h1 {
+    article.content h2 {
       font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
       color: #2e2e2e; }
-    article.content h2.subheading {
+    article.content h3.subheading {
       font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
       color: #2e2e2e;
       font-size: 0.8em;
@@ -1367,6 +1489,15 @@ section {
       form#dataEntry input[type=submit]:hover {
         background-color: #2e6bb1; }
 
+  div#contact-form {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    background-color: #fff;
+    padding: 0;
+    margin: 60px 0; }
+
   form#contact {
     float: none;
     display: block;
@@ -1592,8 +1723,17 @@ section {
     width: 100%;
     background: url(../images/img-naturalwhite-01.png) repeat; }
 
-  .calendarBlog, .mainContent {
+  .calendarBlog {
     margin-top: 60px; }
+
+  div#contact-form {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    background-color: #fff;
+    padding: 0;
+    margin: 60px 0; }
 
   form#contact {
     float: none;
@@ -1845,14 +1985,13 @@ section {
   .mainPage {
     width: 100%;
     max-width: 100%;
-    height: 500px;
     padding: 0;
     margin: 60px 0 0 0; }
     .mainPage div#carousel {
       height: 440px;
       background-color: #FFF;
       border-right: none;
-      padding: 20px;
+      padding: 0;
       margin: 0 auto; }
       .mainPage div#carousel #slides {
         position: relative;
@@ -1876,23 +2015,24 @@ section {
         .mainPage div#carousel #slides .showing {
           opacity: 1;
           z-index: 2; }
-    .mainPage #info {
-      background-color: #fff;
-      height: 360px;
-      padding: 10px 60px; }
-      .mainPage #info p {
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 1.0em;
-        line-height: 1.5; }
+
+  #info {
+    background-color: #fff;
+    height: 360px;
+    padding: 10px 100px; }
+    #info p {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 1.0em;
+      line-height: 1.5; }
 
   article.content {
     width: 80%;
     padding: 12px;
     margin: 0 auto; }
-    article.content h1 {
+    article.content h2 {
       font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
       color: #2e2e2e; }
-    article.content h2.subheading {
+    article.content h3.subheading {
       font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
       color: #2e2e2e;
       font-size: 0.8em;
@@ -1954,12 +2094,12 @@ section {
     background-color: #fff;
     padding: 15px;
     margin: 65px auto 5px; }
-    article.blogContent h1 {
+    article.blogContent h2 {
       font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
       font-size: 1.8em;
       line-height: 1.5;
       color: #0D73B8; }
-    article.blogContent h2.subheading {
+    article.blogContent h3.subheading {
       font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
       color: #0D73B8;
       font-size: 0.8em;
@@ -2335,6 +2475,15 @@ section {
   .drop.right {
     right: 0; }
 
+  #info {
+    background-color: #fff;
+    height: 420px;
+    padding: 10px; }
+    #info p {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 1.0em;
+      line-height: 1.5; }
+
   div.outerBlog {
     background-color: #F2F2F2;
     background: url(../images/img-naturalwhite-01.png) repeat;
@@ -2349,11 +2498,11 @@ section {
     height: auto;
     background-color: #fff;
     padding: 20px; }
-    article.content h1 {
+    article.content h2 {
       font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
       color: #2e2e2e;
       line-height: 1.2em; }
-    article.content h2.subheading {
+    article.content h3.subheading {
       font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
       color: #2e2e2e;
       font-size: 0.8em;
@@ -2402,116 +2551,6 @@ section {
           color: green; }
       article.content div#system #edit {
         right: 80px; }
-
-  form#contact {
-    float: left;
-    display: block;
-    width: 100%;
-    max-width: 50%;
-    height: auto;
-    background-color: #EDEAD9;
-    padding: 15px;
-    margin: 20px; }
-    form#contact fieldset {
-      border: 2px solid #4C9CF1;
-      padding: 20px; }
-    form#contact legend {
-      font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-      font-size: 1.4em;
-      color: #4C9CF1;
-      padding: 0 5px; }
-    form#contact label {
-      float: left;
-      display: block;
-      width: 100%;
-      max-width: 140px;
-      height: 30px;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 1.0em;
-      line-height: 30px;
-      color: #4C9CF1;
-      text-align: left;
-      padding: 0; }
-    form#contact input {
-      clear: right;
-      display: block;
-      width: 100%;
-      max-width: 280px;
-      height: 30px;
-      border: none;
-      outline: none;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 1.0em;
-      color: #2e2e2e;
-      padding: 0 5px;
-      margin-bottom: 10px; }
-    form#contact div.radioBlock {
-      display: block;
-      width: 100%;
-      max-width: 100%;
-      height: auto;
-      margin: 0 auto; }
-      form#contact div.radioBlock input[type=radio] {
-        display: none;
-        margin: 10px; }
-      form#contact div.radioBlock input[type=radio] + label.radioStyle {
-        display: inline-block;
-        width: 33.33333333333%;
-        height: 45px;
-        margin: -2px;
-        text-align: center;
-        text-transform: capitalize;
-        cursor: pointer;
-        color: #fff;
-        background-color: #4484CE;
-        border: 2px solid #fff;
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 1.0em;
-        line-height: 43px;
-        margin: 10px auto 0 auto; }
-      form#contact div.radioBlock input[type=radio] + label.radioStyle:hover {
-        color: #ffa;
-        background-color: #2e2e2e; }
-      form#contact div.radioBlock input[type=radio]:checked + label.radioStyle {
-        background-image: none;
-        color: #fff;
-        background-color: #2e2e2e; }
-    form#contact label.textBox {
-      clear: both;
-      text-align: left;
-      font-size: 1.2em;
-      padding: 0;
-      margin-top: 20px; }
-    form#contact textArea#comments {
-      resize: none;
-      border: none;
-      outline: none;
-      clear: both;
-      display: block;
-      width: 100%;
-      max-width: 600px;
-      height: 300px;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 1.0em;
-      line-height: 1.5;
-      padding: 10px; }
-    form#contact .g-recaptcha {
-      margin-top: 20px; }
-    form#contact input[type=submit] {
-      outline: none;
-      border: none;
-      float: right;
-      display: block;
-      width: 100%;
-      max-width: 120px;
-      height: 40px;
-      cursor: pointer;
-      background-color: #4484CE;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 1.0em;
-      color: #fff;
-      text-transform: capitalize;
-      margin-top: 20px; }
 
   div.loginPage {
     display: block;
@@ -2659,8 +2698,7 @@ section {
             background-color: #2e6bb1; }
 
   footer.footer-style {
-    border-top: 4px solid #4C9CF1;
-    background: url(../images/img-naturalwhite-01.png) repeat;
+    background-color: #336699;
     display: block;
     width: 100%;
     max-width: 1000px;
@@ -2668,8 +2706,8 @@ section {
     margin: 0 auto 10px; }
     footer.footer-style p.footer-name {
       font-family: Arial, Helvetica, sans-serif;
-      color: #1d82ed;
-      font-size: 0.8em;
+      color: #fff;
+      font-size: 1.0em;
       line-height: 50px;
       text-align: center;
       font-weight: bold; } }
