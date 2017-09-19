@@ -21,7 +21,15 @@ class Display extends Read {
     }
 
     public function display() {
+
+
+
+
         foreach ($this->data as $this->row) {
+            //echo "<pre>" . print_r($this->row, 1) . "</pre>\n";
+
+
+            echo '<article class="cms">' . "\n";
             echo "<h2>" . htmlspecialchars($this->row->heading) . "</h2>\n";
             echo '<h3 class="subheading">Created on ' . htmlspecialchars($this->row->date_added) . " by " . htmlspecialchars($this->row->author) . "</h3>\n";
             if (!empty($this->row->image_path)) {
@@ -34,12 +42,13 @@ class Display extends Read {
             }
             echo "<p>" . htmlspecialchars($this->row->content) . "</p>\n";
             if (isset($_SESSION['user']) && ($_SESSION['user']->security_level === 'sysop' || $_SESSION['user']->id === $this->row->user_id)) {
-                echo '<div id="system">' . "\n";
-                echo '<a id="edit" href="edit/' . urlencode($this->row->id) . '">Edit</a>' . "\n";
-                echo '<a id="delete" href="delete_page.php?id=' . urlencode($this->row->id) . '">Delete</a>' . "\n";
+                echo '<div class="system">' . "\n";
+                echo '<a class="delete" href="delete_page.php?id=' . urlencode($this->row->id) . '" onclick="return confirm(\'Are you sure you want to delete?\')">Delete</a>' . "\n";
+                echo '<a class="edit" href="edit/' . urlencode($this->row->id) . '">Edit</a>' . "\n";
                 echo "</div>\n";
             }
             echo "<br>\n";
+            echo "</article>\n";
         }
     }
 
