@@ -19,10 +19,10 @@ var el = document.getElementById('sticky');
 window.onscroll = function () {
     //console.log(window.pageYOffset);
     if (window.pageYOffset >= 100) {
-        console.log("True");
+        //console.log("True");
         addClass(el, 'navbar-fixed');
     } else {
-        console.log("False");
+        //console.log("False");
         removeClass(el, 'navbar-fixed');
     }
 }
