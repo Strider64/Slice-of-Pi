@@ -60,7 +60,7 @@ function request_user_agent_matches_session() {
 
 // Has too much time passed since the last login?
 function last_login_is_recent() {
-    $max_elapsed = 60 * 60 * 24 *7; // 7 days:
+    $max_elapsed = 60 * 60 * 24 * 7; // 7 days:
     // return false if value is not set
     if (!isset($_SESSION['last_login'])) {
         return false;
@@ -97,18 +97,25 @@ function confirm_session_is_valid() {
         // Note that header redirection requires output buffering 
         // to be turned on or requires nothing has been output 
         // (not even whitespace).
-        header("Location: login.php");
+
+        $host = filter_input(INPUT_SERVER, 'HTTP_HOST', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $php_self = filter_input(INPUT_SERVER, 'PHP_SELF', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $uri = rtrim(dirname($php_self), '/\\');
+        $extra = 'index.php';
+        header("Location: http://$host$uri/$extra");
         exit;
     }
 }
 
-
-
 function confirm_security_level_is_valid() {
     if (!is_security_level_is_valid()) {
         end_session();
-        header("Location: login.php");
-        exit();
+        $host = filter_input(INPUT_SERVER, 'HTTP_HOST', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $php_self = filter_input(INPUT_SERVER, 'PHP_SELF', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $uri = rtrim(dirname($php_self), '/\\');
+        $extra = 'index.php';
+        header("Location: http://$host$uri/$extra");
+        exit;
     }
 }
 
@@ -118,27 +125,24 @@ function is_logged_in() {
 }
 
 /* Check general security levels */
+
 function is_security_level_is_valid() {
-    
+
     if (!is_logged_in()) {
         return FALSE;
     }
-    
+
     if ($_SESSION['user']->security_level === "member" || $_SESSION['user']->security_level === "sysop") {
         return TRUE;
     } else {
         return FALSE;
     }
-    
 }
 
 // If user is not logged in, end and redirect to login page.
 function confirm_user_logged_in() {
     if (!is_logged_in()) {
         end_session();
-        // Note that header redirection requires output buffering 
-        // to be turned on or requires nothing has been output 
-        // (not even whitespace).
         header("Location: login.php");
         exit;
     }
@@ -156,8 +160,11 @@ function after_successful_login() {
     $_SESSION['ip'] = $_SERVER['REMOTE_ADDR'];
     $_SESSION['user_agent'] = $_SERVER['HTTP_USER_AGENT'];
     $_SESSION['last_login'] = time();
-    header("Location: members_page.php");
-    exit();
+    // Note that header redirection requires output buffering 
+    // to be turned on or requires nothing has been output 
+    // (not even whitespace).
+    header("Location: blog.php");
+    exit;
 }
 
 // Actions to preform after every successful logout
