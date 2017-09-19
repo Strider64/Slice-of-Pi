@@ -30,7 +30,7 @@ if (isset($submit) && $submit === 'submit') {
 
                 $send = new Email($data);
             } else {
-                $success = "You're not a human!";
+                $success = "You're not a human!"; // Not of a production server:
             }
         } else {
             // Log this as a warning and keep an eye on these attempts

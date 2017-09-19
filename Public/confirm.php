@@ -24,7 +24,7 @@ if (isset($confirmation_code)) {
 require_once '../private/includes/header.inc.php';
 ?>
 <div class="container mainContent">
-    <article class="content">
+    <article class="registerStyle">
         <?php
         if ($confirmed) {
             echo "<h1>Thank You!</h1>";

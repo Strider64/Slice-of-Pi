@@ -6,14 +6,29 @@ use Library\CMS\CMS;
 protected_page();
 
 $cms = new CMS();
-//echo "Contents of GET <br>\n";
-//echo "<pre>" . print_r($_GET, 1) . "</pre>\n";
+
 if (isset($_GET['id']) && filter_var($_GET['id'], FILTER_VALIDATE_INT)) {
     $id = filter_var($_GET['id']);
     $result = $cms->readId($id);
 } elseif (isset($_GET['id'])) {
-    header("Location: members_page.php");
-    exit();
+    $host = filter_input(INPUT_SERVER, 'HTTP_HOST', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    //$host = $_SERVER['HTTP_HOST'];
+    $php_self = filter_input(INPUT_SERVER, 'PHP_SELF', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $uri = rtrim(dirname($php_self), '/\\');
+    $extra = 'members_page.php';
+    header("Location: http://$host$uri/$extra");
+    exit;
+}
+
+if (isset($_SESSION['user']) && $_SESSION['user']->security_level !== 'sysop') {
+    if (isset($result->id) && $_SESSION['user']->id !== $result->user_id) {
+        $host = filter_input(INPUT_SERVER, 'HTTP_HOST', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $php_self = filter_input(INPUT_SERVER, 'PHP_SELF', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $uri = rtrim(dirname($php_self), '/\\');
+        $extra = 'index.php';
+        header("Location: http://$host$uri/$extra");
+        exit;
+    }
 }
 
 $action = filter_input(INPUT_POST, 'action', FILTER_SANITIZE_URL);

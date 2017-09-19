@@ -98,7 +98,7 @@ require_once '../private/includes/header.inc.php';
                     echo '<div id="mainselection">' . "\n";
                     echo '<select name="page_name">' . "\n";
                     foreach ($sysop as $key => $value) {
-                        echo $value;
+                        echo $value . "\n";
                     }
                     echo "</select>\n";
                     echo "</div>\n";
