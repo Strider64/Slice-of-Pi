@@ -8,7 +8,7 @@
             echo '<base href="https://www.pepster.com/">';
         }
 
-        $title = ['Index' => 'A Slice of Technology - Learning from Technology', 'About' => 'About John Pepp - Owner - Slice of Tecnology', 'Blog' => 'Online Blog Everyone', 'Calendar' => 'Calendar - Blog', 'Contact' => 'Contact - John Pepp', 'Edit' => 'Edit Page', 'Login' => 'Login - Registration - a Slice of Technogy', 'Members_page' => 'Member Only Page', 'Daily' => "Daily Blog"];
+        $title = ['Index' => 'A Slice of Technology - Learning from Technology', 'About' => 'About John Pepp - Owner - Slice of Tecnology', 'Blog' => 'Online Blog Everyone', 'Calendar' => 'Calendar - Blog', 'Contact' => 'Contact - John Pepp', 'Edit' => 'Edit Page', 'Login' => 'Login - Registration - a Slice of Technogy', 'Members_page' => 'Member Only Page', 'Daily' => "Daily Blog", 'Notice' => 'Notice', 'Confirm' => "Confirmation Page"];
         ?>
 
         <meta charset="UTF-8">
@@ -42,7 +42,7 @@
                         <li><a href="about">about</a></li>                        
                         <li><a href="calendar"><span>calendar</span></a>
                         <li><a href="blog">blog</a></li>
-                        <li><a href="members_page.php"><?php echo(is_logged_in()) ? "Members" : "Login"; ?></a></li>
+                        <li><a href="members_page.php"><?php echo(is_logged_in()) ? "New Blog" : "Login"; ?></a></li>
                         <li><a href="contact">contact</a></li>
                         <?php echo (is_logged_in()) ? '<li><a href="logout.php">logout</a></li>' . "\n" : NULL; ?>
                     </ul>
@@ -59,10 +59,10 @@
                     <ul class="slider-margin">
                         <li><a href="index">home</a></li>
                         <li><a href="about">about</a></li>                        
-                        <li class="menu-trigger"><a class="mobile-menu" href="calendar"><span>calendar</span></a>
+                        <li class="menu-trigger"><a class="mobile-menu" href="blog"><span>blog</span></a>
                             <ul class="drop">
-                                <li><a href="blog" class="current">blog</a></li>
-                                <li><a href="members_page.php">members</a></li>
+                                <li><a href="calendar" class="current">calendar</a></li>
+                                <li><a href="members_page.php">new blog</a></li>
                             </ul>
                         </li>
                         <li><a href="order">order</a></li>

@@ -6,6 +6,12 @@
 <script src="assets/js/slideshow.js"></script>
 <script src="assets/js/GoogleAnalytics.js"></script>
 <script src="assets/js/privacy.js"></script>
+<?php 
+    if ($basename === 'blog.php') {
+        echo '<script src="assets/js/blog-user-selection.js"></script>';
+    }
+?>
+
 </body>
 </html>
 
