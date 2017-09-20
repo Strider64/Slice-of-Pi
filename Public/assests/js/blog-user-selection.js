@@ -95,6 +95,16 @@ function generateHTML(json) {
             article.appendChild(div);
 
             var a = document.createElement('a');
+            var deleteClass = document.createAttribute('class');
+            deleteClass.value = 'delete';
+            a.setAttributeNode(deleteClass);
+            var href = document.createAttribute('href');
+            href.value = 'delete_page.php?id=' + encodeURI(json[i].id);
+            a.setAttributeNode(href);
+            a.textContent = "Delete";
+            div.appendChild(a);
+
+            var a = document.createElement('a');
             var editClass = document.createAttribute('class');
             editClass.value = 'edit';
             a.setAttributeNode(editClass);
