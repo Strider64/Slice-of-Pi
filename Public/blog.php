@@ -1,6 +1,8 @@
 <?php
 require_once '../private/initialize.php';
 
+//$abspath=$_SERVER['DOCUMENT_ROOT']; 
+//echo $abspath . '/sliceofpi06212017/public/assets/uploads/' ;
 use Library\Display\Display;
 
 $status = is_logged_in() ? TRUE : FALSE;
@@ -34,39 +36,16 @@ require_once '../private/includes/header.inc.php';
         echo $display->display();
         ?> 
     </div>
-    
+
     <div id="ajaxPostings" class="span8">
-        
+
     </div>
     <div id="blogInfo" class="span4">
         <h2>The Daily Blog</h2>
-        <?php
-        echo '<form id="selectBlog" action = "' . $basename . '" method = "post">' . "\n";
-        echo '<input type="hidden" name="action" value="selection">' . "\n";
-        echo '<input type="hidden" name="token" value="' . $_SESSION['token'] . '">';
-        echo '<input id="statusCheck" type="hidden" name="status" value="' . $status . '">';
-        echo "<label>Select User</label>\n";
-        echo '<div id="selectUser">' . "\n";
-        echo '<select id="selectBtn" name = "user_id">' . "\n";
-        //echo '<option value="' . $user_id . '" selected>' . $data[0]->author . '</option>' . "\n";
-        foreach ($names as $name) {
-            if ($name['id'] == $user_id) {
-                $selected = "selected";
-            } else {
-                $selected = null;
-            }
-            if ($name['private'] === 'no') {
-                echo '<option value="' . $name['id'] . '" ' . $selected . '>' . $name['full_name'] . '</option>' . "\n";
-            } elseif ($name['id'] === $_SESSION['user']->id || $_SESSION['user']->security_level == 'sysop') {
-               echo '<option value="' . $name['id'] . '" ' . $selected . '>' . $name['full_name'] . '</option>' . "\n";
-            }
-        }
-        echo "</select>\n";
-        echo "</div>\n";
-        echo '<input id="blogSubmitBtn" type = "submit" name = "submit" value = "submit button">' . "\n";
-        echo "</form>\n";
-        ?>
-        <p>Thank You for visiting my blog section of my website! I'm finally getting around to developing this page, so please excuse the dust. I will be actively working on this page in the next couple of weeks and hopefully be finishing it by then.</p>
+        <?= displaySelectNames($names, $basename, $status, $user_id); ?>
+        <p>This is a FREE blog that anyone can use and you can keep it private for your eyes only. Note, I have the right to check the private posts after all I am running this website, so don't write anything of  a confidential nature. Though hopefully you will make it public for everyone to see. To write a new post for your blog you must be logged in and then simply click the button below.</p>
+
+        <?php echo is_logged_in() ? '<a id="blogButton" href="members_page.php">new blog</a>' . "\n" : NULL; ?>
     </div>
 </div>
 <?php
