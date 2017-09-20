@@ -1,5 +1,9 @@
 # Slice-of-Technology
-My website in development using HTML, CSS and PHP
+My website is development using HTML, CSS, pure JavaScript, Ajax and PHP (Procedural and OOP) and you are willing to modify all or any of these files. All I ask is you give me credit in one of the files.
 
+John Pepp
+Website Developer
+Livonia, Michigan, USA
+jrpepp@pepster.com 
 
-I'm in the process of turning my website in to a fully capable Content Management System (CMS) and so far so good. I plan on changing it slightly so it uses a MVC model approach in php so that it will be real easy to setup on any website. However, that probably won't be implement for a while. Not all the files are updated or uploaded to Slice of Technology repository. However, in the next couple of weeks I hope to have most of them uploaded. While I have been testing this out on my local server and remote server just just remember I'm not responsible if any thing goes wrong. However, I pretty postive it won't, but anyone notices a glaring please send me an email my way. Thanks John
+There's no need for a php framework or a javascript library. All that is needed is a web server with PHP 7 and MySQL and composer for the autoloader. Some knowledge of PHP will be required to get this to work properly, for I haven't written an installer and probably won't, for this is just a small project of mine and I want it to stay that way. It would also be useful to have a good knowledge of HTML, CSS and Javascript. 
