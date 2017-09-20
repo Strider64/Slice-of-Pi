@@ -59,13 +59,15 @@
                     <ul class="slider-margin">
                         <li><a href="index">home</a></li>
                         <li><a href="about">about</a></li>                        
-                        <li class="menu-trigger"><a class="mobile-menu" href="blog"><span>blog</span></a>
+<!--                        <li class="menu-trigger"><a class="mobile-menu" href="blog"><span>blog</span></a>
                             <ul class="drop">
                                 <li><a href="calendar" class="current">calendar</a></li>
                                 <li><a href="members_page.php">new blog</a></li>
                             </ul>
-                        </li>
-                        <li><a href="order">order</a></li>
+                        </li>-->
+                        <li><a href="blog">blog</a></li>
+                        <li><a href="calendar" class="current">calendar</a></li>
+                        <!--                        <li><a href="order">order</a></li>-->
                         <li><a href="contact">contact</a></li>
                     </ul>
                     <?php
