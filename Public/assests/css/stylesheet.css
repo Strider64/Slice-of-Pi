@@ -2342,8 +2342,28 @@ div#blog-style-box {
           background-color: #000; }
     #blogInfo p {
       font-family: 'PT Sans', sans-serif;
-      font-size: 1.2em;
+      font-size: 1.0em;
       line-height: 1.5; }
+    #blogInfo #blogButton {
+      border: none;
+      outline: none;
+      display: block;
+      width: 100%;
+      max-width: 100px;
+      height: 30px;
+      background-color: #000;
+      font-family: 'PT Sans', sans-serif;
+      font-size: 1.2em;
+      line-height: 30px;
+      color: #fff;
+      text-align: center;
+      text-transform: capitalize;
+      text-decoration: none;
+      padding: 0 10px;
+      margin: 10px auto; }
+      #blogInfo #blogButton:hover {
+        background-color: #193a60;
+        color: #ffa; }
 
   div#carousel {
     clear: both;
