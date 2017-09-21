@@ -20,22 +20,9 @@ if (isset($submit) && $submit === 'login') {
     $username = trim(filter_input(INPUT_POST, 'username', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
     $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-    if (preg_match('/^[ \w]+$/', $username) && (strlen($username) > 0)) {
-        $throttle_delay = throttle_failed_logins($username);
-        if ($throttle_delay > 0) {
-            $message = "Too many login attempts. ";
-            $message .= "You must wait " . $throttle_delay . " minutes before you can attempt another login.";
-        } else {
-            $result = $users->read($username, $password);
-            if ($result) {
-                clear_failed_logins($username);
-                after_successful_login();
-            } else {
-                record_failed_login($username);
-            }
-        } 
-    } else {
-        unset($username);
+    $result = $users->read($username, $password);
+    if ($result) {
+        after_successful_login();
     }
 }
 
