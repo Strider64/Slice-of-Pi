@@ -125,7 +125,7 @@ function generateHTML(json) {
 function ajaxCall(onlineStatus) {
     removeElementsByClass('cms');
     var url = 'select_user.php';
-    var myData = 'user_id=' + onlineStatus +'&submit=submit'; // id might be different on a different website:
+    var myData = 'user_id=' + onlineStatus + '&submit=submit'; // id might be different on a different website:
     displayBlog(url, myData, function (result) {
         //console.log(result);
         var json = JSON.parse(result);
@@ -138,9 +138,9 @@ document.getElementById('blogPostings').style.display = 'none';
 document.getElementById('ajaxPostings').style.display = "block";
 var onlineStatus = document.getElementById('website').getAttribute('data-bind');
 console.log('id', onlineStatus);
-if (onlineStatus) {
-    ajaxCall(onlineStatus);
-}
+
+ajaxCall(onlineStatus);
+
 
 
 /*
