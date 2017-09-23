@@ -122,10 +122,10 @@ function generateHTML(json) {
 /*
  * Display Initial Blog 
  */
-function ajaxCall() {
+function ajaxCall(onlineStatus) {
     removeElementsByClass('cms');
     var url = 'select_user.php';
-    var myData = 'user_id=65&submit=submit'; // id might be different on a different website:
+    var myData = 'user_id=' + onlineStatus +'&submit=submit'; // id might be different on a different website:
     displayBlog(url, myData, function (result) {
         //console.log(result);
         var json = JSON.parse(result);
@@ -136,7 +136,12 @@ function ajaxCall() {
 
 document.getElementById('blogPostings').style.display = 'none';
 document.getElementById('ajaxPostings').style.display = "block";
-ajaxCall();
+var onlineStatus = document.getElementById('website').getAttribute('data-bind');
+console.log('id', onlineStatus);
+if (onlineStatus) {
+    ajaxCall(onlineStatus);
+}
+
 
 /*
  * Display Blog that user selects
