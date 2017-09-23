@@ -54,7 +54,7 @@ require_once '../private/includes/header.inc.php';
 
     <div id="blogPostings" class="span8">
         <?php
-        $display->readBlog("blog.php", $user_id);
+        $display->readBlog($basename, $user_id);
 
         echo $display->display();
         ?> 
