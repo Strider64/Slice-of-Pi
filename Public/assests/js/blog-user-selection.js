@@ -43,6 +43,7 @@ function displayBlog(url, formData, callback) {
             //console.log(xhr.status);
         }
         if (xhr.readyState == 4 && xhr.status == 200) {
+            //console.log(xhr.readyState);
             callback(xhr.responseText);
         }
     }; // End of Ready State:
@@ -127,9 +128,16 @@ function ajaxCall(onlineStatus) {
     var url = 'select_user.php';
     var myData = 'user_id=' + onlineStatus + '&submit=submit'; // id might be different on a different website:
     displayBlog(url, myData, function (result) {
-        //console.log(result);
+
         var json = JSON.parse(result);
-        generateHTML(json)
+        console.log(json);
+        if (json.status === "empty") {
+            console.log("It's empty!");
+            window.location.replace("members_page.php");
+        } else {
+            generateHTML(json);
+        }
+
     });
 
 }
