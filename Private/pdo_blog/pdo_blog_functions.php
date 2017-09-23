@@ -38,3 +38,26 @@ function displaySelectNames(array $names, $basename, $status, $user_id) {
     echo "\t\t\t" . '<input id="blogSubmitBtn" type = "submit" name = "submit" value = "submit button">' . "\n";
     echo "\t\t" . "</form>\n";
 }
+
+function changePrivacy($value) {
+    $db = DB::getInstance();
+    $pdo = $db->getConnection();
+    $query = 'UPDATE users SET private=:private, date_updated=NOW() WHERE id =:id';
+    $stmt = $pdo->prepare($query);
+    $result = $stmt->execute([':private' => $value, ':id' => $_SESSION['user']->id]);
+    if ($result) {
+        $_SESSION['user']->private = $value;
+        header("Location: blog.php");
+        exit();
+    }
+}
+
+function getSysopId() {
+    $db = DB::getInstance();
+    $pdo = $db->getConnection();
+    $query = 'SELECT id, security_level FROM users WHERE security_level=:security_level';
+    $stmt = $pdo->prepare($query);
+    $stmt->execute([':security_level' => 'sysop']);
+    $id = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $id['id'];
+}
