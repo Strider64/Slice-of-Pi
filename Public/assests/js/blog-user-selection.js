@@ -1,6 +1,6 @@
 var button = document.getElementById("blogSubmitBtn");
 var selectBtn = document.getElementById("selectBtn");
-
+button.style['display'] = 'none';
 function serializeFormById(id) {
     function add(name, value) {
         result +=
@@ -172,13 +172,12 @@ function removeElementsByClass(className) {
     }
 }
 
-if (selectBtn !== null) {
-    button.style['display'] = 'none';
-    selectBtn.addEventListener("mouseleave", function (event) {
-        event.preventDefault();
-        selectUser();
-    }); // End of addEventListener Function: 
-}
+
+selectBtn.addEventListener("change", function (event) {
+    event.preventDefault();
+    selectUser();
+}, false); // End of addEventListener Function: 
+
 
 var eraseable = document.getElementsByClassName("eraseable");
 
